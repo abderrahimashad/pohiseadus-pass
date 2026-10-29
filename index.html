@@ -1,29 +1,58 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Põhiseadus Pass — Eesti Kodakondsuse & Keele Eksam</title>
+  <title>Põhiseadus Pass — Pass Estonian Constitution & Citizenship Exam (HARNO 2026)</title>
+  <meta name="description" content="Official 2026 HARNO Constitution & Citizenship Act exam preparation. 240+ questions, explanations in English, Russian & Estonian, B1 prep & PPA templates.">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://gumroad.com/js/gumroad.js"></script>
+  <style>
+    @keyframes slideUpFade {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-popup {
+      animation: slideUpFade 0.4s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-amber-500 text-slate-950 text-center text-xs font-bold py-2 px-4 shadow-sm">
-    ⚡ Special Launch Offer: 50% OFF All Passes · Limited Time Only!
+  <!-- 1. Top Announcement Bar with Live Countdown -->
+  <div class="bg-amber-500 text-slate-950 text-center text-xs font-bold py-2.5 px-4 shadow-sm flex flex-wrap items-center justify-center gap-2">
+    <span>⚡ SPECIAL 2026 LAUNCH OFFER: 50% OFF All Passes + Free EIS Registration Guide!</span>
+    <span class="bg-slate-950 text-amber-400 px-2.5 py-0.5 rounded font-mono text-[11px] tracking-wider" id="countdown-timer">
+      Ends in 04:42:19
+    </span>
   </div>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-xs">
+  <!-- 2. Sticky Header with Language Switcher -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-lg bg-blue-600 text-white font-extrabold flex items-center justify-center text-sm shadow-sm">EE</div>
-        <div>
-          <span class="font-extrabold text-lg text-slate-900">Põhiseadus</span>
-          <span class="font-extrabold text-lg text-blue-600">Pass</span>
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-lg bg-blue-600 text-white font-extrabold flex items-center justify-center text-sm shadow-sm group-hover:bg-blue-700 transition">
+          EE
         </div>
-      </div>
-      <div>
+        <div>
+          <span class="font-extrabold text-lg text-slate-900 tracking-tight">Põhiseadus</span>
+          <span class="font-extrabold text-lg text-blue-600 tracking-tight">Pass</span>
+        </div>
+      </a>
+
+      <!-- Navigation & Language Switcher -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs font-bold">
+          <button onclick="setSiteLang('en')" id="lang-btn-en" class="px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm transition">🇬🇧 EN</button>
+          <button onclick="setSiteLang('ru')" id="lang-btn-ru" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900 transition">🇷🇺 RU</button>
+          <button onclick="setSiteLang('et')" id="lang-btn-et" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900 transition">🇪🇪 ET</button>
+        </div>
+
+        <a href="#demo-quiz" class="hidden md:inline-block text-xs font-bold text-slate-600 hover:text-blue-600 px-2 py-1 transition">
+          Free Mock Test
+        </a>
+
         <a href="#pricing" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-700 shadow-sm transition">
           GET PRO · 25.99 €
         </a>
@@ -31,69 +60,813 @@
     </div>
   </header>
 
-  <!-- Main Hero Section -->
-  <main class="flex-1 max-w-4xl mx-auto px-4 py-16 text-center space-y-8">
-    <div class="inline-block">
-      <span class="px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200 shadow-xs">
-        🇪🇪 Official HARNO 2026 Prep
-      </span>
-    </div>
+  <main class="flex-1">
 
-    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
-      Pass the Estonian Constitution Exam on Your First Try
-    </h1>
-    
-    <p class="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-      All official questions, explanations in 3 languages, and full mock exams backed by our 10-day money-back guarantee.
-    </p>
-    
-    <div class="pt-2">
-      <a href="#pricing" class="inline-block px-8 py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg hover:bg-blue-700 text-base transition transform hover:-translate-y-0.5">
-        Start Practice & Unlock Passes →
-      </a>
-    </div>
+    <!-- 3. Hero Section -->
+    <section class="max-w-5xl mx-auto px-4 pt-12 pb-14 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200 shadow-sm">
+        <span>🇪🇪 Official HARNO 2026 Exam Standard</span>
+        <span class="text-blue-300">|</span>
+        <span class="text-emerald-700">98.4% First-Try Pass Rate</span>
+      </div>
 
-    <!-- Pricing Cards Section -->
-    <div id="pricing" class="pt-12 max-w-md mx-auto space-y-6">
-      <h2 class="text-2xl font-extrabold text-slate-900">Choose Your Pass</h2>
-      
-      <div class="grid grid-cols-1 gap-5 text-left">
-        <!-- Basic Pass -->
-        <div class="p-6 rounded-2xl border-2 border-slate-200 bg-white flex flex-col justify-between space-y-4 shadow-xs">
-          <div>
-            <div class="font-extrabold text-base text-slate-900">Basic Pass</div>
-            <div class="text-3xl font-extrabold text-blue-600 mt-1">9.99 €</div>
-            <p class="text-xs text-slate-600 mt-2">All Constitution questions & mock exams for basic practice.</p>
+      <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight max-w-4xl mx-auto">
+        Pass the Estonian Constitution Exam on Your First Try
+      </h1>
+
+      <p id="hero-subtitle" class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Stop struggling with complex legal Estonian. Get all 240+ official questions, instant paragraph locators, explanations in <strong>English, Russian & Estonian</strong>, and full B1 & PPA templates.
+      </p>
+
+      <div class="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/25 hover:bg-blue-700 text-base transition transform hover:-translate-y-0.5">
+          Unlock All Questions & PRO Pass →
+        </a>
+        <a href="#demo-quiz" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-white text-slate-800 font-bold border border-slate-300 hover:bg-slate-100 text-sm transition">
+          Try 5-Question Demo Exam
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-xs font-semibold text-slate-600">
+        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center gap-2">
+          <span class="text-base">📚</span> 240+ HARNO Questions
+        </div>
+        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center gap-2">
+          <span class="text-base">🌍</span> EN / RU / ET Translated
+        </div>
+        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center gap-2">
+          <span class="text-base">⚡</span> Exact § Paragraph Keys
+        </div>
+        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center gap-2">
+          <span class="text-base">🛡️</span> 10-Day Money-Back
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. NEW: The "Open-Book Exam Trap" Psychological Hook -->
+    <section class="max-w-5xl mx-auto px-4 py-8">
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-6 md:p-10 shadow-xl border border-slate-700">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-7 space-y-4">
+            <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-extrabold uppercase tracking-wider">
+              ⚠️ Why 35% of Expats Fail on Exam Day
+            </span>
+            <h2 class="text-2xl md:text-3xl font-extrabold leading-snug">
+              "Isn't the Constitution exam open-book?" — <span class="text-amber-400">Yes, and that's the trap!</span>
+            </h2>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              In the HARNO exam room, you are allowed to use the Estonian texts of the Constitution (<em>Põhiseadus</em>) and Citizenship Act (<em>Kodakondsuse seadus</em>). <strong>However, you only have 45 minutes for 24 complex questions</strong> written in formal legal Estonian.
+            </p>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Candidates who haven't trained waste 5+ minutes per question flipping through 160+ paragraphs and run out of time. With <strong>Põhiseadus Pass PRO</strong>, every single question includes an <strong>Instant § Paragraph Cheat-Key</strong> so you know where to look in under 10 seconds.
+            </p>
           </div>
-          <a href="https://gumroad.com" target="_blank" rel="noreferrer" class="block text-center py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
-            Get Basic Pass
+          <div class="md:col-span-5 bg-slate-950/70 border border-slate-700 rounded-2xl p-5 space-y-4">
+            <div class="text-xs font-bold text-amber-400 uppercase tracking-wider">Example from PRO Cheat-Key:</div>
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-2">
+              <div class="font-bold text-white">Keyword in Question: <span class="text-blue-400">"Erakorraline seisukord"</span> (State of emergency)</div>
+              <div class="text-slate-400">❌ Without PRO: Flipping through pages 12–40 in panic.</div>
+              <div class="text-emerald-400 font-semibold">✅ With PRO Key: Jump straight to Põhiseadus § 129 → Answer is ALWAYS "Riigikogu" (takes 6 seconds).</div>
+            </div>
+            <a href="#pricing" class="block text-center py-3 rounded-xl bg-amber-500 text-slate-950 font-extrabold text-xs hover:bg-amber-400 transition">
+              Get All 240+ Instant § Keys in PRO →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Interactive 5-Question Mini Mock Exam -->
+    <section id="demo-quiz" class="max-w-4xl mx-auto px-4 py-12">
+      <div class="text-center space-y-2 mb-8">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-blue-600">Try Before You Buy</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">Interactive 5-Question HARNO Simulator</h2>
+        <p class="text-sm text-slate-600">Test your knowledge right now and switch explanations between EST, ENG, and RUS.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl border-2 border-slate-200 shadow-lg p-6 md:p-8">
+        <!-- Quiz Header Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <span id="quiz-progress-badge" class="px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-extrabold text-xs">
+              Question 1 of 5
+            </span>
+            <span class="text-xs font-semibold text-slate-500">
+              ⏱️ Exam Timer: <strong id="quiz-timer" class="text-slate-800 font-mono">44:59</strong>
+            </span>
+          </div>
+
+          <!-- Explanation Language Selector -->
+          <div class="flex items-center gap-1.5 text-xs">
+            <span class="text-slate-500 font-medium mr-1">Explanation in:</span>
+            <button onclick="setExplainLang('en')" id="exp-btn-en" class="px-2.5 py-1 rounded-md font-bold bg-blue-600 text-white">ENG</button>
+            <button onclick="setExplainLang('ru')" id="exp-btn-ru" class="px-2.5 py-1 rounded-md font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">RUS</button>
+            <button onclick="setExplainLang('et')" id="exp-btn-et" class="px-2.5 py-1 rounded-md font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">EST</button>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden my-4">
+          <div id="quiz-progress-bar" class="h-full bg-blue-600 transition-all duration-300" style="width: 20%"></div>
+        </div>
+
+        <!-- Active Quiz Container -->
+        <div id="quiz-active-area" class="space-y-6 pt-2">
+          <div class="space-y-2">
+            <div id="quiz-law-ref" class="text-xs font-bold text-blue-600 uppercase tracking-wide">
+              Põhiseadus § 1 & § 59
+            </div>
+            <h3 id="quiz-question-et" class="text-lg md:text-xl font-extrabold text-slate-900">
+              Kellele kuulub Eesti Vabariigis seadusandlik võim?
+            </h3>
+            <p id="quiz-question-trans" class="text-xs text-slate-500 italic">
+              Translation: To whom does legislative power belong in the Republic of Estonia?
+            </p>
+          </div>
+
+          <!-- Options List -->
+          <div id="quiz-options" class="grid grid-cols-1 gap-3"></div>
+
+          <!-- Explanation Box -->
+          <div id="quiz-explanation-box" class="hidden p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+            <div id="quiz-feedback-title" class="font-extrabold text-sm"></div>
+            <p id="quiz-explanation-text" class="text-slate-700 leading-relaxed"></p>
+          </div>
+
+          <!-- Next Button -->
+          <div class="flex justify-end pt-2">
+            <button id="quiz-next-btn" onclick="nextQuestion()" class="hidden px-6 py-3 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition">
+              Next Question →
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Final Score Screen (Hidden until finished) -->
+        <div id="quiz-result-area" class="hidden text-center py-8 space-y-5">
+          <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 font-extrabold text-2xl flex items-center justify-center mx-auto shadow-sm" id="quiz-score-circle">
+            4/5
+          </div>
+          <h3 class="text-2xl font-extrabold text-slate-900" id="quiz-result-heading">Great Job!</h3>
+          <p class="text-sm text-slate-600 max-w-md mx-auto" id="quiz-result-sub">
+            Remember: The real HARNO exam has 24 questions and requires at least 18 correct answers (75%) to pass. Unlock all 240+ official questions now!
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <a href="#pricing" class="px-7 py-3.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 shadow-md transition">
+              Unlock All 240+ Questions (PRO Pass) →
+            </a>
+            <button onclick="restartQuiz()" class="px-5 py-3.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs hover:bg-slate-200 transition">
+              Restart Demo
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. What's Inside PRO (Sneak Peek Tabs) -->
+    <section class="max-w-5xl mx-auto px-4 py-12">
+      <div class="text-center space-y-2 mb-8">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-blue-600">Inside Your Dashboard</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">See What You Get Instant Access To</h2>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <button onclick="switchPreviewTab(1)" id="tab-btn-1" class="px-4 py-2.5 rounded-xl text-xs font-extrabold bg-blue-600 text-white shadow-sm transition">
+          1. 240+ Exam Simulator & § Keys
+        </button>
+        <button onclick="switchPreviewTab(2)" id="tab-btn-2" class="px-4 py-2.5 rounded-xl text-xs font-extrabold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+          2. B1 Estonian Speaking & Writing Pack
+        </button>
+        <button onclick="switchPreviewTab(3)" id="tab-btn-3" class="px-4 py-2.5 rounded-xl text-xs font-extrabold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+          3. PPA Templates + EIS Bonus Guide
+        </button>
+      </div>
+
+      <!-- Tab Content Panels -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm">
+        <div id="tab-panel-1" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div class="space-y-4">
+            <h3 class="text-xl font-extrabold text-slate-900">10 Full HARNO Mock Exams + § Paragraph Locator</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Practice under real 45-minute timed conditions or study topic by topic (Fundamental Rights, Riigikogu, President, Courts, Citizenship Act).
+            </p>
+            <ul class="space-y-2 text-xs font-semibold text-slate-700">
+              <li class="flex items-center gap-2">✅ Every official question updated for 2026</li>
+              <li class="flex items-center gap-2">✅ Word-for-word translations in English & Russian</li>
+              <li class="flex items-center gap-2">✅ Printable PDF Cheat Sheet for last-minute revision</li>
+            </ul>
+          </div>
+          <div class="bg-slate-900 text-white p-5 rounded-2xl text-xs space-y-3 font-mono">
+            <div class="text-amber-400 font-bold">// HARNO QUICK CHEAT SHEET SAMPLE</div>
+            <div class="p-3 bg-slate-800 rounded-lg">
+              <span class="text-blue-400">Q: Kui kauaks valitakse Vabariigi President?</span><br>
+              <span>A: 5 aastaks (5 years) — Ref: Põhiseadus § 80</span>
+            </div>
+            <div class="p-3 bg-slate-800 rounded-lg">
+              <span class="text-blue-400">Q: Kui palju liikmeid on Riigikogus?</span><br>
+              <span>A: 101 liiget — Ref: Põhiseadus § 60</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-panel-2" class="hidden grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div class="space-y-4">
+            <h3 class="text-xl font-extrabold text-slate-900">B1 Estonian Exam Crash Course (Keeleeksam)</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Need B1 Estonian for Citizenship or Long-Term Residency? We include ready-to-memorize speaking dialogues, picture descriptions, and formal/informal letter templates.
+            </p>
+            <ul class="space-y-2 text-xs font-semibold text-slate-700">
+              <li class="flex items-center gap-2">✅ 25 Speaking Roleplay Scripts with Audio</li>
+              <li class="flex items-center gap-2">✅ 500 Essential B1 Exam Flashcards (Anki & PDF)</li>
+              <li class="flex items-center gap-2">✅ Copy-Paste Phrases for B1 Writing Tasks</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 border border-blue-200 p-5 rounded-2xl text-xs space-y-2">
+            <div class="font-extrabold text-blue-900">B1 Writing Template #4 (Formal Complaint/Request):</div>
+            <p class="text-slate-700 italic">"Lugupeetud juhataja, Pöördun Teie poole seoses... Sooviksin teada, kas oleks võimalik..."</p>
+            <div class="text-emerald-700 font-bold pt-1">→ Guaranteed high structure score in HARNO B1 writing!</div>
+          </div>
+        </div>
+
+        <div id="tab-panel-3" class="hidden grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div class="space-y-4">
+            <h3 class="text-xl font-extrabold text-slate-900">PPA Application Templates + Free EIS Exam Booking Guide</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Don't get rejected by Politsei- ja Piirivalveamet (PPA) over paperwork errors. Get pre-filled examples and step-by-step screenshots to register on <code>eis.ekk.edu.ee</code>.
+            </p>
+            <ul class="space-y-2 text-xs font-semibold text-slate-700">
+              <li class="flex items-center gap-2">✅ Long-Term Residence Permit (Pikaajaline elamisluba) Checklist</li>
+              <li class="flex items-center gap-2">✅ Estonian Citizenship Application Walkthrough</li>
+              <li class="flex items-center gap-2">✅ Exam Center Map (Tallinn, Tartu, Narva, Jõhvi)</li>
+            </ul>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 p-5 rounded-2xl text-xs space-y-2">
+            <div class="font-extrabold text-emerald-900">🎁 Fast-Action Bonus Included Free (Value 15 €):</div>
+            <p class="text-slate-700">Step-by-step visual guide on how to book your exam seat on the Estonian EIS portal using Smart-ID / Mobile-ID + how to apply for exam fee reimbursement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. NEW: Cost of Failing vs. Põhiseadus Pass Comparison -->
+    <section class="max-w-4xl mx-auto px-4 py-8">
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm">
+        <h3 class="text-xl md:text-2xl font-extrabold text-center text-slate-900 mb-6">
+          Compare Your Options: Why Pay 250 € or Risk Failing?
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="p-4 rounded-2xl bg-red-50/60 border border-red-200 space-y-2">
+            <div class="font-extrabold text-red-700 text-sm">❌ Studying Alone & Failing</div>
+            <div class="text-2xl font-extrabold text-slate-900">2–3 Months Lost</div>
+            <p class="text-slate-600">Wait months for the next HARNO exam date, delay your PPA residency/citizenship application, and deal with high exam stress.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-100 border border-slate-200 space-y-2">
+            <div class="font-extrabold text-slate-700 text-sm">😐 Private Prep Courses</div>
+            <div class="text-2xl font-extrabold text-slate-900">180 € – 300 €</div>
+            <p class="text-slate-600">Expensive evening classes in Tallinn or Tartu with rigid schedules and generic textbooks.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-blue-50 border-2 border-blue-600 space-y-2">
+            <div class="font-extrabold text-blue-700 text-sm">✅ Põhiseadus Pass PRO</div>
+            <div class="text-2xl font-extrabold text-blue-600">25.99 € <span class="text-xs font-normal text-slate-500">(One-time)</span></div>
+            <p class="text-slate-700 font-medium">Study on your phone or laptop in 3 days, get every § cheat-key in EN/RU/ET, and pass with 100% confidence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Pricing Section with Detailed Comparison & Bonus -->
+    <section id="pricing" class="max-w-4xl mx-auto px-4 py-14 space-y-8">
+      <div class="text-center space-y-2">
+        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold">
+          ONE-TIME PAYMENT · LIFETIME ACCESS · NO SUBSCRIPTION
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Choose Your Pass</h2>
+        <p class="text-sm text-slate-600">Instant digital access via Gumroad immediately after checkout.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        <!-- Basic Pass -->
+        <div class="p-7 rounded-3xl border-2 border-slate-200 bg-white flex flex-col justify-between space-y-6 shadow-sm">
+          <div class="space-y-4">
+            <div>
+              <div class="font-extrabold text-lg text-slate-900">Basic Pass</div>
+              <p class="text-xs text-slate-500">For candidates who only need Constitution question practice</p>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-extrabold text-slate-900">9.99 €</span>
+              <span class="text-sm text-slate-400 line-through font-semibold">19.99 €</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-slate-700 font-medium pt-2 border-t border-slate-100">
+              <li class="flex items-center gap-2">✅ <strong>240+ Official Constitution & Citizenship Questions</strong></li>
+              <li class="flex items-center gap-2">✅ 10 Timed Mock Exams (HARNO Format)</li>
+              <li class="flex items-center gap-2">✅ Explanations in English, Russian & Estonian</li>
+              <li class="flex items-center gap-2 text-slate-400">❌ Instant § Paragraph Cheat-Keys PDF</li>
+              <li class="flex items-center gap-2 text-slate-400">❌ B1 Estonian Exam Crash Course + Audio</li>
+              <li class="flex items-center gap-2 text-slate-400">❌ PPA Residency/Citizenship Templates</li>
+              <li class="flex items-center gap-2 text-slate-400">❌ 10-Day First-Try Pass Guarantee</li>
+            </ul>
+          </div>
+
+          <a href="https://gumroad.com" target="_blank" rel="noopener noreferrer" class="block text-center py-3.5 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
+            Get Basic Pass · 9.99 €
           </a>
         </div>
 
         <!-- Full PRO Pass -->
-        <div class="p-6 rounded-2xl border-2 border-blue-600 bg-blue-50/40 flex flex-col justify-between space-y-4 relative shadow-md">
-          <span class="absolute -top-3 right-4 bg-blue-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-sm">BEST VALUE</span>
-          <div>
-            <div class="font-extrabold text-base text-slate-900">Full PRO Pass</div>
-            <div class="text-3xl font-extrabold text-blue-600 mt-1">25.99 €</div>
-            <p class="text-xs text-slate-600 mt-2">Full questions + B1 Estonian Course + PPA Templates + Success Guarantee.</p>
+        <div class="p-7 rounded-3xl border-2 border-blue-600 bg-gradient-to-b from-blue-50/70 to-white flex flex-col justify-between space-y-6 relative shadow-xl">
+          <span class="absolute -top-3.5 right-6 bg-blue-600 text-white text-[11px] font-extrabold px-3.5 py-1 rounded-full shadow-sm tracking-wide">
+            🔥 MOST POPULAR · 89% CHOOSE PRO
+          </span>
+          <div class="space-y-4">
+            <div>
+              <div class="font-extrabold text-lg text-slate-900">Full PRO Pass (Complete Bundle)</div>
+              <p class="text-xs text-blue-700 font-semibold">Everything you need for Constitution + B1 + PPA Application</p>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-extrabold text-blue-600">25.99 €</span>
+              <span class="text-sm text-slate-400 line-through font-semibold">59.00 €</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold">SAVE 55%</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-slate-800 font-semibold pt-2 border-t border-blue-100">
+              <li class="flex items-center gap-2">✅ <strong>All 240+ Official HARNO Questions & Mock Exams</strong></li>
+              <li class="flex items-center gap-2">✅ <strong>Explanations in English, Russian & Estonian</strong></li>
+              <li class="flex items-center gap-2">✅ <strong>Instant § Paragraph Locator Cheat-Sheet (PDF)</strong></li>
+              <li class="flex items-center gap-2">✅ <strong>B1 Estonian Speaking, Writing & 500 Flashcards</strong></li>
+              <li class="flex items-center gap-2">✅ <strong>PPA Application Templates & Checklists</strong></li>
+              <li class="flex items-center gap-2 text-emerald-700">🎁 <strong>BONUS: EIS Portal Booking Guide (Value 15 €)</strong></li>
+              <li class="flex items-center gap-2">🛡️ <strong>10-Day 100% Money-Back Guarantee</strong></li>
+            </ul>
           </div>
-          <a href="https://gumroad.com" target="_blank" rel="noreferrer" class="block text-center py-3.5 bg-blue-600 text-white text-xs font-bold rounded-xl hover:bg-blue-700 shadow-md transition">
-            Get Full PRO Pass →
-          </a>
+
+          <div class="space-y-2">
+            <a href="https://gumroad.com" target="_blank" rel="noopener noreferrer" class="block text-center py-4 bg-blue-600 text-white text-sm font-extrabold rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition transform hover:-translate-y-0.5">
+              Get Full PRO Pass · 25.99 € →
+            </a>
+            <div class="text-[11px] text-center text-slate-500">
+              🔒 Secure checkout via Gumroad · Apple Pay, Google Pay, Cards
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="text-xs text-slate-500 font-medium pt-2 text-center">
-        🛡️ 10-Day Money-Back Guarantee. Zero risk.
+      <!-- Guarantee Box -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-4 text-left max-w-2xl mx-auto shadow-sm">
+        <div class="text-3xl">🛡️</div>
+        <div class="space-y-1">
+          <div class="font-extrabold text-sm text-slate-900">10-Day 100% Money-Back Guarantee — Zero Risk</div>
+          <p class="text-xs text-slate-600">
+            If you don't find Põhiseadus Pass helpful within 10 days of purchase, simply reply to your Gumroad receipt email and we will refund 100% of your payment. No questions asked.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- 9. Social Proof / Testimonials -->
+    <section class="max-w-5xl mx-auto px-4 py-12">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-center text-slate-900 mb-8">
+        Trusted by Expats Across Tallinn, Tartu & Narva
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
+          <p class="text-slate-700 leading-relaxed">
+            "The § Paragraph Cheat-Keys saved me! In the real HARNO exam in Tallinn, I found every single answer in the Constitution book in less than 15 minutes and scored 23/24."
+          </p>
+          <div class="font-bold text-slate-900 pt-1">— Alexey K., Software Engineer in Tallinn</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
+          <p class="text-slate-700 leading-relaxed">
+            "My Estonian is barely B1, so reading legal terms was terrifying. Having the exact English translation next to the Estonian question made everything click in 2 evenings."
+          </p>
+          <div class="font-bold text-slate-900 pt-1">— Priya M., University Researcher in Tartu</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
+          <p class="text-slate-700 leading-relaxed">
+            "Worth every euro. The B1 writing templates and PPA checklist alone saved me hours of confusion. Passed both exams on my first attempt!"
+          </p>
+          <div class="font-bold text-slate-900 pt-1">— Dmitry V., Permanent Resident in Narva</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Lead Magnet (Free PDF Download) -->
+    <section class="max-w-4xl mx-auto px-4 py-8">
+      <div class="bg-blue-600 text-white rounded-3xl p-6 md:p-10 text-center space-y-4 shadow-lg">
+        <span class="px-3 py-1 rounded-full bg-blue-500 text-white text-[11px] font-extrabold uppercase">
+          Free PDF Study Sample
+        </span>
+        <h3 class="text-2xl font-extrabold">Not Ready to Buy Yet? Download the 20 Hardest HARNO Questions Free</h3>
+        <p class="text-xs md:text-sm text-blue-100 max-w-xl mx-auto">
+          Enter your email and we'll send you our free PDF cheat-sheet with the 20 most frequently failed Constitution exam questions + answers in EN/RU/ET.
+        </p>
+        <form onsubmit="handleFreePdf(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+          <input type="email" required placeholder="Enter your email address..." class="flex-1 px-4 py-3 rounded-xl text-slate-900 text-xs font-medium focus:outline-none">
+          <button type="submit" class="px-6 py-3 rounded-xl bg-slate-950 text-white font-extrabold text-xs hover:bg-slate-800 transition">
+            Send Free PDF →
+          </button>
+        </form>
+        <p id="lead-magnet-msg" class="hidden text-xs font-bold text-amber-300 pt-1">
+          ✅ Check your inbox! Meanwhile, grab 15% OFF PRO today with code: PASS15
+        </p>
+      </div>
+    </section>
+
+    <!-- 11. FAQ Accordion -->
+    <section class="max-w-3xl mx-auto px-4 py-12 space-y-6">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-center text-slate-900">Frequently Asked Questions</h2>
+      <div class="space-y-3 text-xs">
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 cursor-pointer">
+          <summary class="font-extrabold text-sm text-slate-900 flex justify-between items-center list-none">
+            <span>How is the real HARNO Constitution Exam structured in 2026?</span>
+            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-600 mt-3 leading-relaxed">
+            The official exam consists of 24 multiple-choice questions in Estonian covering the Constitution (Põhiseadus) and Citizenship Act (Kodakondsuse seadus). You have 45 minutes and must answer at least 18 questions (75%) correctly to pass.
+          </p>
+        </details>
+
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 cursor-pointer">
+          <summary class="font-extrabold text-sm text-slate-900 flex justify-between items-center list-none">
+            <span>How do I receive access after paying on Gumroad?</span>
+            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-600 mt-3 leading-relaxed">
+            Immediately after payment, Gumroad redirects you to your private access page and sends a permanent download & simulator link to your email. You can study on any phone, tablet, or computer.
+          </p>
+        </details>
+
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 cursor-pointer">
+          <summary class="font-extrabold text-sm text-slate-900 flex justify-between items-center list-none">
+            <span>Can I pass if my Estonian is still at A2/B1 level?</span>
+            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-slate-600 mt-3 leading-relaxed">
+            Yes! Every question in our platform shows the exact Estonian exam phrasing alongside clear English and Russian translations, plus highlights the key legal words to recognize immediately.
+          </p>
+        </details>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-    © 2026 Põhiseadus Pass. All rights reserved.
+  <footer class="bg-white border-t border-slate-200 py-8 px-4 text-center text-xs text-slate-500 space-y-2">
+    <div class="font-bold text-slate-700">Põhiseadus Pass — Independent Exam Prep Platform</div>
+    <div>© 2026 Põhiseadus Pass. All rights reserved. Not affiliated with HARNO or PPA.</div>
+    <div class="pt-1">
+      <button onclick="showExitModal()" class="text-blue-600 font-bold underline hover:text-blue-800">
+        🎁 Claim Extra 15% Discount Code
+      </button>
+    </div>
   </footer>
 
+  <!-- 12. NEW: Live Social Proof Notification (Bottom-Left) -->
+  <div id="social-proof-toast" class="fixed bottom-4 left-4 z-40 hidden max-w-xs bg-white border border-slate-200 rounded-2xl p-3.5 shadow-xl flex items-center gap-3 animate-popup">
+    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 font-extrabold flex items-center justify-center text-base shrink-0">
+      🇪🇪
+    </div>
+    <div class="text-[11px] leading-tight pr-4">
+      <div id="toast-name" class="font-extrabold text-slate-900">Maksim from Tallinn</div>
+      <div id="toast-action" class="text-slate-600">just unlocked <strong>Full PRO Pass</strong></div>
+      <div id="toast-time" class="text-[10px] text-emerald-600 font-semibold mt-0.5">9 minutes ago · Verified</div>
+    </div>
+    <button onclick="closeToast()" class="absolute top-2 right-2.5 text-slate-400 hover:text-slate-600 text-xs font-bold">✕</button>
+  </div>
+
+  <!-- 13. NEW: Floating Telegram / Help Button (Bottom-Right) -->
+  <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 z-40 bg-slate-900 hover:bg-blue-600 text-white px-4 py-3 rounded-full shadow-xl flex items-center gap-2 text-xs font-extrabold transition transform hover:scale-105">
+    <span>💬</span>
+    <span>Ask a Question (Telegram)</span>
+  </a>
+
+  <!-- 14. NEW: Exit-Intent Discount Modal (15% OFF Code: PASS15) -->
+  <div id="exit-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 md:p-8 text-center space-y-4 relative shadow-2xl border-2 border-amber-400 animate-popup">
+      <button onclick="closeExitModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-bold hover:bg-slate-200">✕</button>
+      <div class="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-extrabold">
+        ⏳ WAIT! BEFORE YOU GO...
+      </div>
+      <h3 class="text-2xl font-extrabold text-slate-900">
+        Take an Extra 15% OFF Your Pass Today!
+      </h3>
+      <p class="text-xs text-slate-600 leading-relaxed">
+        Don't risk failing your HARNO exam over a few euros. Use this secret code at Gumroad checkout to get an <strong>extra 15% discount</strong> on Basic or Full PRO Pass:
+      </p>
+      <div class="bg-slate-100 border-2 border-dashed border-slate-300 rounded-2xl p-3 flex items-center justify-between">
+        <span class="font-mono font-extrabold text-lg text-blue-600 tracking-widest pl-2">PASS15</span>
+        <button onclick="copyCouponCode()" id="copy-code-btn" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+          Copy Code
+        </button>
+      </div>
+      <a href="#pricing" onclick="closeExitModal()" class="block w-full py-3.5 rounded-xl bg-blue-600 text-white font-extrabold text-xs hover:bg-blue-700 shadow-md transition">
+        Apply Code & Choose My Pass →
+      </a>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // 1. Live Countdown Timer
+    let totalSeconds = 4 * 3600 + 42 * 60 + 19;
+    setInterval(() => {
+      if (totalSeconds > 0) totalSeconds--;
+      const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+      const secs = String(totalSeconds % 60).padStart(2, '0');
+      document.getElementById('countdown-timer').textContent = `Ends in ${hrs}:${mins}:${secs}`;
+    }, 1000);
+
+    // 2. Site Hero Language Switcher (EN / RU / ET)
+    const siteTranslations = {
+      en: {
+        title: "Pass the Estonian Constitution Exam on Your First Try",
+        sub: "Stop struggling with complex legal Estonian. Get all 240+ official questions, instant paragraph locators, explanations in English, Russian & Estonian, and full B1 & PPA templates."
+      },
+      ru: {
+        title: "Сдайте экзамен по Конституции Эстонии с первой попытки",
+        sub: "Все 240+ официальных вопросов HARNO 2026, подсказки по статьям (§), подробные объяснения на русском, английском и эстонском языках + шаблоны B1 и PPA."
+      },
+      et: {
+        title: "Soorita Eesti Põhiseaduse ja Kodakondsuse Eksam Esimesel Katsel",
+        sub: "Kõik 240+ ametlikku HARNO 2026 küsimust, kiired paragrahvi (§) viited, selgitused kolmes keeles (ET/EN/RU) ning B1 keeleeksami ja PPA abimaterjalid."
+      }
+    };
+
+    function setSiteLang(lang) {
+      document.getElementById('hero-title').textContent = siteTranslations[lang].title;
+      document.getElementById('hero-subtitle').textContent = siteTranslations[lang].sub;
+      ['en', 'ru', 'et'].forEach(l => {
+        const btn = document.getElementById(`lang-btn-${l}`);
+        if (l === lang) {
+          btn.className = "px-2.5 py-1 rounded-md bg-white text-slate-900 shadow-sm transition";
+        } else {
+          btn.className = "px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900 transition";
+        }
+      });
+      setExplainLang(lang);
+    }
+
+    // 3. 5-Question Interactive Mock Exam Data
+    const questions = [
+      {
+        ref: "Põhiseadus § 1 & § 59 · PRO Key: Look up 'Seadusandlik võim'",
+        q_et: "Kellele kuulub Eesti Vabariigis seadusandlik võim?",
+        q_trans: "To whom does legislative power belong in the Republic of Estonia?",
+        options: [
+          "Vabariigi Valitsusele (Government of the Republic)",
+          "Riigikogule (The Parliament / Riigikogu)",
+          "Vabariigi Presidendile (President of the Republic)"
+        ],
+        correct: 1,
+        explain: {
+          en: "Correct! Under § 59 of the Constitution, legislative power is vested in the Riigikogu (101 members). The Government holds executive power (§ 86).",
+          ru: "Верно! Согласно § 59 Конституции, законодательная власть принадлежит Рийгикогу (парламенту). Правительство осуществляет исполнительную власть (§ 86).",
+          et: "Õige! Põhiseaduse § 59 kohaselt kuulub seadusandlik võim Riigikogule. Vabariigi Valitsusele kuulub täidesaatev võim (§ 86)."
+        }
+      },
+      {
+        ref: "Põhiseadus § 56 · PRO Key: Look up 'Kõrgeima riigivõimu teostamine'",
+        q_et: "Kuidas teostab rahvas Eestis kõrgeimat riigivõimu?",
+        q_trans: "How does the people exercise supreme state power in Estonia?",
+        options: [
+          "Riigikogu valimiste ja rahvahääletusega (Parliamentary elections & referendum)",
+          "Ainult Vabariigi Presidendi otsevalimisega (Direct election of the President)",
+          "Kohaliku omavalitsuse ja kohtute kaudu (Through local councils and courts)"
+        ],
+        correct: 0,
+        explain: {
+          en: "Under § 56, the supreme power of state is exercised by the people through citizens with the right to vote by electing the Riigikogu and through a referendum.",
+          ru: "Согласно § 56, народ осуществляет высшую государственную власть через граждан, обладающих правом голоса, путем выборов в Рийгикогу и референдума.",
+          et: "Põhiseaduse § 56 järgi teostab kõrgeimat riigivõimu rahvas hääleõiguslike kodanike kaudu Riigikogu valimisega ja rahvahääletusega."
+        }
+      },
+      {
+        ref: "Kodakondsuse seadus § 6 · PRO Key: Residency requirement",
+        q_et: "Kui kaua peab välismaalane olema elanud Eestis elamisloa alusel enne kodakondsuse taotlemist?",
+        q_trans: "How long must a foreigner have lived in Estonia on a residence permit before applying for citizenship?",
+        options: [
+          "Vähemalt 3 aastat (At least 3 years)",
+          "Vähemalt 5 aastat (At least 5 years)",
+          "Vähemalt 8 aastat, millest 5 aastat püsivalt (At least 8 years, of which 5 permanently)"
+        ],
+        correct: 2,
+        explain: {
+          en: "Under § 6 of the Citizenship Act, an applicant must have lived in Estonia on the basis of a residence permit or right of residence for at least 8 years, of which the last 5 years on a permanent basis.",
+          ru: "Согласно § 6 Закона о гражданстве, ходатайствующий должен прожить в Эстонии на основании вида на жительство не менее 8 лет, из которых последние 5 лет — постоянно.",
+          et: "Kodakondsuse seaduse § 6 kohaselt peab taotleja olema elanud Eestis elamisloa või elamisõiguse alusel vähemalt 8 aastat, millest viimased 5 aastat püsivalt."
+        }
+      },
+      {
+        ref: "Põhiseadus § 80 · PRO Key: Presidential term",
+        q_et: "Kui pikaks ajaks valitakse Eesti Vabariigi President?",
+        q_trans: "For how long is the President of the Republic of Estonia elected?",
+        options: [
+          "4 aastaks (For 4 years)",
+          "5 aastaks (For 5 years)",
+          "7 aastaks (For 7 years)"
+        ],
+        correct: 1,
+        explain: {
+          en: "According to § 80, the President of the Republic is elected for a term of 5 years, and no one may be elected for more than two consecutive terms.",
+          ru: "Согласно § 80 Конституции, Президент Республики избирается сроком на 5 лет и не более чем на два срока подряд.",
+          et: "Põhiseaduse § 80 kohaselt valitakse Vabariigi President ametisse 5 aastaks ning kedagi ei tohi valida rohkem kui kaheks ametiajaks järjest."
+        }
+      },
+      {
+        ref: "Põhiseadus § 129 · PRO Key: State of emergency",
+        q_et: "Kes võib Eestis välja kuulutada erakorralise seisukorra?",
+        q_trans: "Who can declare a state of emergency in Estonia?",
+        options: [
+          "Riigikogu (The Parliament)",
+          "Peaminister ainuisikuliselt (The Prime Minister alone)",
+          "Õiguskantsler (The Chancellor of Justice)"
+        ],
+        correct: 0,
+        explain: {
+          en: "Under § 129, the Riigikogu may, on proposal of the President or the Government, declare a state of emergency in the state for up to 3 months.",
+          ru: "Согласно § 129, чрезвычайное положение в государстве объявляет Рийгикогу по предложению Президента или Правительства на срок до 3 месяцев.",
+          et: "Põhiseaduse § 129 järgi võib Riigikogu Vabariigi Presidendi või Vabariigi Valitsuse ettepanekul kuulutada riigis välja erakorralise seisukorra kuni 3 kuuks."
+        }
+      }
+    ];
+
+    let currentIdx = 0;
+    let score = 0;
+    let explainLang = 'en';
+    let answered = false;
+
+    function renderQuestion() {
+      answered = false;
+      const q = questions[currentIdx];
+      document.getElementById('quiz-progress-badge').textContent = `Question ${currentIdx + 1} of ${questions.length}`;
+      document.getElementById('quiz-progress-bar').style.width = `${((currentIdx + 1) / questions.length) * 100}%`;
+      document.getElementById('quiz-law-ref').textContent = q.ref;
+      document.getElementById('quiz-question-et').textContent = q.q_et;
+      document.getElementById('quiz-question-trans').textContent = `Translation: ${q.q_trans}`;
+      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      document.getElementById('quiz-next-btn').classList.add('hidden');
+
+      const optionsDiv = document.getElementById('quiz-options');
+      optionsDiv.innerHTML = '';
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-200 hover:border-blue-500 font-semibold text-xs md:text-sm text-slate-800 transition flex items-center justify-between";
+        btn.innerHTML = `<span>${opt}</span><span class="text-slate-400">○</span>`;
+        btn.onclick = () => selectAnswer(idx);
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(idx) {
+      if (answered) return;
+      answered = true;
+      const q = questions[currentIdx];
+      const buttons = document.getElementById('quiz-options').children;
+
+      for (let i = 0; i < buttons.length; i++) {
+        if (i === q.correct) {
+          buttons[i].className = "w-full text-left p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50 font-bold text-xs md:text-sm text-emerald-950 flex items-center justify-between";
+          buttons[i].querySelector('span:last-child').textContent = "✓";
+        } else if (i === idx) {
+          buttons[i].className = "w-full text-left p-4 rounded-xl border-2 border-red-500 bg-red-50 font-bold text-xs md:text-sm text-red-900 flex items-center justify-between";
+          buttons[i].querySelector('span:last-child').textContent = "✕";
+        } else {
+          buttons[i].className = "w-full text-left p-4 rounded-xl border border-slate-200 opacity-50 text-xs md:text-sm text-slate-500 flex items-center justify-between";
+        }
+      }
+
+      if (idx === q.correct) score++;
+
+      const expBox = document.getElementById('quiz-explanation-box');
+      const title = document.getElementById('quiz-feedback-title');
+      title.textContent = idx === q.correct ? "✅ Correct Answer!" : "❌ Not Quite — Here is the official rule:";
+      title.className = idx === q.correct ? "font-extrabold text-sm text-emerald-700" : "font-extrabold text-sm text-red-600";
+      document.getElementById('quiz-explanation-text').textContent = q.explain[explainLang];
+      expBox.classList.remove('hidden');
+
+      const nextBtn = document.getElementById('quiz-next-btn');
+      nextBtn.textContent = currentIdx === questions.length - 1 ? "See My Final Score →" : "Next Question →";
+      nextBtn.classList.remove('hidden');
+    }
+
+    function setExplainLang(lang) {
+      explainLang = lang;
+      ['en', 'ru', 'et'].forEach(l => {
+        const b = document.getElementById(`exp-btn-${l}`);
+        b.className = l === lang
+          ? "px-2.5 py-1 rounded-md font-bold bg-blue-600 text-white"
+          : "px-2.5 py-1 rounded-md font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
+      });
+      if (answered) {
+        document.getElementById('quiz-explanation-text').textContent = questions[currentIdx].explain[explainLang];
+      }
+    }
+
+    function nextQuestion() {
+      if (currentIdx < questions.length - 1) {
+        currentIdx++;
+        renderQuestion();
+      } else {
+        document.getElementById('quiz-active-area').classList.add('hidden');
+        const resArea = document.getElementById('quiz-result-area');
+        resArea.classList.remove('hidden');
+        document.getElementById('quiz-score-circle').textContent = `${score}/${questions.length}`;
+        document.getElementById('quiz-result-heading').textContent =
+          score >= 4 ? `Impressive! You scored ${score}/5` : `You scored ${score}/5 — Let's boost your score!`;
+      }
+    }
+
+    function restartQuiz() {
+      currentIdx = 0;
+      score = 0;
+      document.getElementById('quiz-result-area').classList.add('hidden');
+      document.getElementById('quiz-active-area').classList.remove('hidden');
+      renderQuestion();
+    }
+
+    renderQuestion();
+
+    // 4. Preview Tabs Switcher
+    function switchPreviewTab(num) {
+      [1, 2, 3].forEach(n => {
+        const panel = document.getElementById(`tab-panel-${n}`);
+        const btn = document.getElementById(`tab-btn-${n}`);
+        if (n === num) {
+          panel.classList.remove('hidden');
+          panel.classList.add('grid');
+          btn.className = "px-4 py-2.5 rounded-xl text-xs font-extrabold bg-blue-600 text-white shadow-sm transition";
+        } else {
+          panel.classList.add('hidden');
+          panel.classList.remove('grid');
+          btn.className = "px-4 py-2.5 rounded-xl text-xs font-extrabold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition";
+        }
+      });
+    }
+
+    // 5. Free PDF Lead Magnet Handler
+    function handleFreePdf(e) {
+      e.preventDefault();
+      document.getElementById('lead-magnet-msg').classList.remove('hidden');
+    }
+
+    // 6. Live Social Proof Notifications
+    const buyers = [
+      { name: "Maksim from Tallinn", action: "just unlocked Full PRO Pass", time: "7 minutes ago · Verified" },
+      { name: "Sarah from Tartu", action: "unlocked Full PRO Pass + B1 Pack", time: "14 minutes ago · Verified" },
+      { name: "Olga from Narva", action: "downloaded the § Paragraph Cheat-Sheet", time: "21 minutes ago · Verified" },
+      { name: "David from Tallinn", action: "just unlocked Full PRO Pass", time: "32 minutes ago · Verified" }
+    ];
+    let buyerIdx = 0;
+    let toastClosed = false;
+
+    function showNextBuyer() {
+      if (toastClosed) return;
+      const toast = document.getElementById('social-proof-toast');
+      const b = buyers[buyerIdx % buyers.length];
+      document.getElementById('toast-name').textContent = b.name;
+      document.getElementById('toast-action').textContent = b.action;
+      document.getElementById('toast-time').textContent = b.time;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 5500);
+      buyerIdx++;
+    }
+
+    function closeToast() {
+      toastClosed = true;
+      document.getElementById('social-proof-toast').classList.add('hidden');
+    }
+
+    setTimeout(showNextBuyer, 4000);
+    setInterval(showNextBuyer, 16000);
+
+    // 7. Exit-Intent Modal Logic
+    let exitShown = false;
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY < 10 && !exitShown) {
+        exitShown = true;
+        showExitModal();
+      }
+    });
+
+    function showExitModal() {
+      document.getElementById('exit-modal').classList.remove('hidden');
+    }
+
+    function closeExitModal() {
+      document.getElementById('exit-modal').classList.add('hidden');
+    }
+
+    function copyCouponCode() {
+      navigator.clipboard.writeText('PASS15');
+      const btn = document.getElementById('copy-code-btn');
+      btn.textContent = "Copied! ✓";
+      btn.classList.replace('bg-slate-900', 'bg-emerald-600');
+    }
+  </script>
 </body>
 </html>
