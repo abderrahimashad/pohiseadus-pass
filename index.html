@@ -17,19 +17,6 @@
   <script type="text/babel">
     const { useState } = React;
 
-    const T = {
-      en: {
-        nav: { home: "Home", practice: "Practice", pricing: "Pricing" },
-        hero: {
-          badge: "Official HARNO 2026 Prep",
-          title: "Pass the Estonian Constitution Exam on Your First Try",
-          subtitle: "All official questions, explanations in 3 languages, and full mock exams.",
-          cta1: "Start Practice →",
-          cta2: "View Pricing"
-        }
-      }
-    };
-
     const QUESTIONS = [
       {
         id: 1, topic: "general", ref: "Põhiseadus § 1",
@@ -96,28 +83,6 @@
         },
         correct: 1,
         exp: { et: "Vähemalt 8 aastat, viimased 5 aastat püsivalt (KS § 6).", en: "At least 8 years, last 5 permanently (Citizenship Act § 6).", ru: "Не менее 8 лет, последние 5 постоянно (§ 6 Закона о гражданстве)." }
-      },
-      {
-        id: 7, topic: "general", ref: "Põhiseadus § 56",
-        q: { et: "Kuidas teostab rahvas oma kõrgeimat riigivõimu?", en: "How does the people exercise its supreme power?", ru: "Как народ осуществляет свою высшую власть?" },
-        options: {
-          et: ["Ainult kohalike valimiste kaudu", "Riigikogu valimiste ja rahvahääletuse kaudu", "Ministrite kaudu"],
-          en: ["Through local elections only", "Through Riigikogu elections and referendums", "Through ministers"],
-          ru: ["Только через местные выборы", "Через выборы в Рийгикогу и референдумы", "Через министров"]
-        },
-        correct: 1,
-        exp: { et: "Rahvas teostab riigivõimu Riigikogu valimiste ja rahvahääletuse kaudu (§ 56).", en: "Through Riigikogu elections and referendums (§ 56).", ru: "Через выборы в Рийгикогу и референдумы (§ 56)." }
-      },
-      {
-        id: 8, topic: "courts", ref: "Põhiseadus § 148",
-        q: { et: "Millistest astmetest koosneb Eesti kohtusüsteem?", en: "What are the tiers of the Estonian court system?", ru: "Из каких инстанций состоит судебная система Эстонии?" },
-        options: {
-          et: ["Ainult Riigikohus", "Maa-, ringkonnakohtud ja Riigikohus", "Ainult maakohtud"],
-          en: ["Supreme Court only", "County, circuit courts and Supreme Court", "County courts only"],
-          ru: ["Только Верховный суд", "Уездные, окружные суды и Гос. суд", "Только уездные суды"]
-        },
-        correct: 1,
-        exp: { et: "Kohtusüsteem on kolmeastmeline (§ 148).", en: "Three-tier court system (§ 148).", ru: "Трехступенчатая судебная система (§ 148)." }
       }
     ];
 
@@ -139,13 +104,6 @@
           setPicked(null);
         } else {
           setIsFinished(true);
-        }
-      };
-
-      const handlePrev = () => {
-        if (qIdx > 0) {
-          setQIdx(qIdx - 1);
-          setPicked(null);
         }
       };
 
@@ -219,8 +177,7 @@
                     <p className="text-slate-700">{curQ.exp[lang] || curQ.exp.et}</p>
                   </div>
                 )}
-                <div className="flex justify-between pt-4 border-t">
-                  <button onClick={handlePrev} disabled={qIdx === 0} className="px-4 py-2 border rounded-lg text-sm font-bold disabled:opacity-40">← Prev</button>
+                <div className="flex justify-end pt-4 border-t">
                   <button onClick={handleNext} className="px-6 py-2 bg-slate-900 text-white rounded-lg text-sm font-bold hover:bg-slate-800">
                     {qIdx === QUESTIONS.length - 1 ? "Finish Test 🏁" : "Next →"}
                   </button>
@@ -230,15 +187,22 @@
           )}
 
           {isFinished && (
-            <main className="flex-1 max-w-xl mx-auto w-full px-4 py-16 text-center space-y-6">
+            <main className="flex-1 max-w-xl mx-auto w-full px-4 py-12 text-center space-y-6">
               <div className="bg-white p-8 rounded-2xl border shadow-xl space-y-4">
-                <div className="text-5xl">🎉</div>
+                <div className="text-4xl">🎉</div>
                 <h2 className="text-2xl font-extrabold text-slate-900">Practice Test Completed!</h2>
                 <p className="text-slate-600">You scored <span className="font-bold text-[#0072CE] text-xl">{score}</span> out of <span className="font-bold">{QUESTIONS.length}</span></p>
-                <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-sm text-slate-700">
-                  {score >= 6 ? "✅ Excellent! You are ready for the official exam." : "💡 Good effort! Review the constitution sections and try again."}
+                
+                {/* Commercial CTA Box */}
+                <div className="p-5 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 text-left space-y-3">
+                  <div className="font-extrabold text-[#0072CE] text-base">🚀 Want 100+ Official Questions & B1 Course?</div>
+                  <p className="text-xs text-slate-600 leading-relaxed">Unlock the full Põhiseadus Pass to get unlimited mock exams, translation guides, and pass your exam guaranteed.</p>
+                  <button onClick={() => setShowPayModal(true)} className="w-full py-3 bg-[#0072CE] hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md transition">
+                    Unlock Full PRO Pass (29.99 €) →
+                  </button>
                 </div>
-                <button onClick={() => { setQIdx(0); setScore(0); setPicked(null); setIsFinished(false); }} className="w-full py-3 bg-[#0072CE] text-white font-bold rounded-xl hover:bg-blue-700">Try Again 🔄</button>
+
+                <button onClick={() => { setQIdx(0); setScore(0); setPicked(null); setIsFinished(false); }} className="w-full py-3 border border-slate-300 text-slate-700 font-bold rounded-xl hover:bg-slate-50 text-sm">Try Again 🔄</button>
               </div>
             </main>
           )}
