@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Põhiseadus Pass — Eesti Kodakondsuse & Keele Eksam</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
 
-  <!-- Top Offer Banner -->
-  <div class="bg-amber-500 text-slate-950 text-center text-xs font-extrabold py-2 px-4 shadow-inner">
-    ⚡ Special Launch Offer: 50% OFF All Passes · Ends Soon!
+  <!-- Top Announcement Bar -->
+  <div class="bg-amber-500 text-slate-950 text-center text-xs font-bold py-2 px-4 shadow-sm">
+    ⚡ Special Launch Offer: 50% OFF All Passes · Limited Time Only!
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+  <header class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-xs">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2.5 cursor-pointer">
-        <div class="w-9 h-9 rounded-lg bg-[#0072CE] text-white font-extrabold flex items-center justify-center">EE</div>
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-lg bg-blue-600 text-white font-extrabold flex items-center justify-center text-sm shadow-sm">EE</div>
         <div>
           <span class="font-extrabold text-lg text-slate-900">Põhiseadus</span>
-          <span class="font-extrabold text-lg text-[#0072CE]">Pass</span>
+          <span class="font-extrabold text-lg text-blue-600">Pass</span>
         </div>
       </div>
       <div>
-        <a href="#pricing" class="px-4 py-2 bg-[#0072CE] text-white rounded-lg text-xs font-bold hover:bg-blue-700">
+        <a href="#pricing" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-700 shadow-sm transition">
           GET PRO · 25.99 €
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <main class="flex-1 max-w-4xl mx-auto px-4 py-16 text-center space-y-6">
-    <span class="px-3 py-1 rounded-full bg-blue-50 text-[#0072CE] text-xs font-bold border border-blue-200">🇪🇪 Official HARNO 2026 Prep</span>
-    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">Pass the Estonian Constitution Exam on Your First Try</h1>
-    <p class="text-base text-slate-600 max-w-2xl mx-auto">All official questions, explanations in 3 languages, and full mock exams backed by our 10-day money-back guarantee.</p>
+  <!-- Main Hero Section -->
+  <main class="flex-1 max-w-4xl mx-auto px-4 py-16 text-center space-y-8">
+    <div class="inline-block">
+      <span class="px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200 shadow-xs">
+        🇪🇪 Official HARNO 2026 Prep
+      </span>
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+      Pass the Estonian Constitution Exam on Your First Try
+    </h1>
     
-    <div class="pt-4">
-      <a href="#pricing" class="inline-block px-8 py-4 rounded-xl bg-[#0072CE] text-white font-bold shadow-lg hover:bg-blue-700 text-base">
+    <p class="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+      All official questions, explanations in 3 languages, and full mock exams backed by our 10-day money-back guarantee.
+    </p>
+    
+    <div class="pt-2">
+      <a href="#pricing" class="inline-block px-8 py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg hover:bg-blue-700 text-base transition transform hover:-translate-y-0.5">
         Start Practice & Unlock Passes →
       </a>
     </div>
 
-    <!-- Pricing Section -->
-    <div id="pricing" class="pt-16 max-w-md mx-auto space-y-6">
+    <!-- Pricing Cards Section -->
+    <div id="pricing" class="pt-12 max-w-md mx-auto space-y-6">
       <h2 class="text-2xl font-extrabold text-slate-900">Choose Your Pass</h2>
       
-      <div class="grid grid-cols-1 gap-4 text-left">
+      <div class="grid grid-cols-1 gap-5 text-left">
         <!-- Basic Pass -->
-        <div class="p-5 rounded-2xl border-2 border-slate-200 bg-white flex flex-col justify-between space-y-4 shadow-sm">
+        <div class="p-6 rounded-2xl border-2 border-slate-200 bg-white flex flex-col justify-between space-y-4 shadow-xs">
           <div>
             <div class="font-extrabold text-base text-slate-900">Basic Pass</div>
-            <div class="text-2xl font-extrabold text-[#0072CE] mt-1">9.99 €</div>
+            <div class="text-3xl font-extrabold text-blue-600 mt-1">9.99 €</div>
             <p class="text-xs text-slate-600 mt-2">All Constitution questions & mock exams for basic practice.</p>
           </div>
-          <a href="https://gumroad.com" target="_blank" rel="noreferrer" class="block text-center py-2.5 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800">
+          <a href="https://gumroad.com" target="_blank" rel="noreferrer" class="block text-center py-3 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition">
             Get Basic Pass
           </a>
         </div>
 
         <!-- Full PRO Pass -->
-        <div class="p-5 rounded-2xl border-2 border-[#0072CE] bg-blue-50/40 flex flex-col justify-between space-y-4 relative shadow-md">
-          <span class="absolute -top-3 right-4 bg-[#0072CE] text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full shadow">BEST VALUE</span>
+        <div class="p-6 rounded-2xl border-2 border-blue-600 bg-blue-50/40 flex flex-col justify-between space-y-4 relative shadow-md">
+          <span class="absolute -top-3 right-4 bg-blue-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-sm">BEST VALUE</span>
           <div>
             <div class="font-extrabold text-base text-slate-900">Full PRO Pass</div>
-            <div class="text-2xl font-extrabold text-[#0072CE] mt-1">25.99 €</div>
+            <div class="text-3xl font-extrabold text-blue-600 mt-1">25.99 €</div>
             <p class="text-xs text-slate-600 mt-2">Full questions + B1 Estonian Course + PPA Templates + Success Guarantee.</p>
           </div>
-          <a href="https://gumroad.com" target="_blank" rel="noreferrer" class="block text-center py-3 bg-[#0072CE] text-white text-xs font-bold rounded-xl hover:bg-blue-700 shadow">
+          <a href="https://gumroad.com" target="_blank" rel="noreferrer" class="block text-center py-3.5 bg-blue-600 text-white text-xs font-bold rounded-xl hover:bg-blue-700 shadow-md transition">
             Get Full PRO Pass →
           </a>
         </div>
       </div>
 
-      <div class="text-xs text-slate-500 font-medium pt-2">
+      <div class="text-xs text-slate-500 font-medium pt-2 text-center">
         🛡️ 10-Day Money-Back Guarantee. Zero risk.
       </div>
     </div>
