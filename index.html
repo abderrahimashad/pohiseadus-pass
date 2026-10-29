@@ -15,44 +15,24 @@
   <div id="root"></div>
 
   <script type="text/babel">
-    const { useState, useEffect } = React;
+    const { useState } = React;
 
     const T = {
-      et: {
-        nav: { home: "Avaleht", practice: "Praktika", exam: "Proovieksam", lang: "Eesti keel B1/A2", pricing: "Hinnad" },
-        hero: {
-          badge: "Ametlik HARNO 2026 ettevalmistus",
-          title: "Soorita Põhiseaduse eksam esimese korraga",
-          subtitle: "Kõik ametlikud küsimused, selgitused 3 keeles, ajapiiranguga proovieksamid ja keelekursus.",
-          cta1: "Alusta harjutamist →",
-          cta2: "Vaata hindu"
-        }
-      },
       en: {
-        nav: { home: "Home", practice: "Practice", exam: "Mock Exam", lang: "Estonian B1/A2", pricing: "Pricing" },
+        nav: { home: "Home", practice: "Practice", pricing: "Pricing" },
         hero: {
           badge: "Official HARNO 2026 Prep",
           title: "Pass the Estonian Constitution Exam on Your First Try",
-          subtitle: "All official questions, explanations in 3 languages, timed mock exams, and language prep.",
+          subtitle: "All official questions, explanations in 3 languages, and full mock exams.",
           cta1: "Start Practice →",
           cta2: "View Pricing"
-        }
-      },
-      ru: {
-        nav: { home: "Главная", practice: "Практика", exam: "Экзамен", lang: "Язык B1/A2", pricing: "Цены" },
-        hero: {
-          badge: "Официальная подготовка HARNO 2026",
-          title: "Сдайте экзамен по Конституции Эстонии с первого раза",
-          subtitle: "Все официальные вопросы, разбор на 3 языках, пробные тесты на время и языковой курс.",
-          cta1: "Начать практику →",
-          cta2: "Цены"
         }
       }
     };
 
     const QUESTIONS = [
       {
-        id: 1, topic: "general", free: true, ref: "Põhiseadus § 1",
+        id: 1, topic: "general", ref: "Põhiseadus § 1",
         q: { et: "Kelle käes on Eesti Vabariigis kõrgeim riigivõim?", en: "Who holds the supreme power of state in Estonia?", ru: "Кому принадлежит высшая государственная власть в Эстонии?" },
         options: {
           et: ["Vabariigi Presidendil", "Rahval", "Riigikogul"],
@@ -63,7 +43,7 @@
         exp: { et: "Kõrgeima riigivõimu kandja on rahvas (§ 1).", en: "Supreme power is vested in the people (§ 1).", ru: "Носителем высшей гос. власти является народ (§ 1)." }
       },
       {
-        id: 2, topic: "general", free: true, ref: "Põhiseadus § 6",
+        id: 2, topic: "general", ref: "Põhiseadus § 6",
         q: { et: "Mis on Eesti Vabariigi riigikeel?", en: "What is the official state language of Estonia?", ru: "Какой язык является государственным в Эстонии?" },
         options: {
           et: ["Eesti ja inglise keel", "Eesti keel", "Eesti ja vene keel"],
@@ -74,7 +54,7 @@
         exp: { et: "Eesti riigikeel on eesti keel (§ 6).", en: "The official language is Estonian (§ 6).", ru: "Государственным языком является эстонский (§ 6)." }
       },
       {
-        id: 3, topic: "rights", free: true, ref: "Põhiseadus § 20",
+        id: 3, topic: "rights", ref: "Põhiseadus § 20",
         q: { et: "Kui kaua võib isikut kinni pidada ilma kohtu loata?", en: "How long can a person be detained without a court warrant?", ru: "На какой срок можно задержать без санкции суда?" },
         options: {
           et: ["Kuni 24 tundi", "Kuni 48 tundi", "Kuni 72 tundi"],
@@ -85,7 +65,7 @@
         exp: { et: "Ilma kohtu loata kuni 48 tundi (§ 20).", en: "Up to 48 hours without a warrant (§ 20).", ru: "Без санкции суда — до 48 часов (§ 20)." }
       },
       {
-        id: 4, topic: "riigikogu", free: false, ref: "Põhiseadus § 60",
+        id: 4, topic: "riigikogu", ref: "Põhiseadus § 60",
         q: { et: "Mitu liiget on Riigikogul ja kui kauaks nad valitakse?", en: "How many members does Riigikogu have and for how long?", ru: "Сколько депутатов в Рийгикогу и на какой срок?" },
         options: {
           et: ["101 liiget, 4 aastaks", "100 liiget, 5 aastaks", "120 liiget, 4 aastaks"],
@@ -96,7 +76,7 @@
         exp: { et: "Riigikogul on 101 liiget, 4 aastat (§ 60).", en: "101 members elected for 4 years (§ 60).", ru: "101 депутат, избираемый на 4 года (§ 60)." }
       },
       {
-        id: 5, topic: "president", free: false, ref: "Põhiseadus § 79",
+        id: 5, topic: "president", ref: "Põhiseadus § 79",
         q: { et: "Mis on Vabariigi Presidendi kandidaadi vanuse alampiir?", en: "What is the minimum age for a Presidential candidate?", ru: "Каков минимальный возраст кандидата в Президенты?" },
         options: {
           et: ["Vähemalt 35 aastat", "Vähemalt 40 aastat", "Vähemalt 45 aastat"],
@@ -107,7 +87,7 @@
         exp: { et: "Vähemalt 40-aastane sünnilt Eesti kodanik (§ 79).", en: "At least 40 years old, citizen by birth (§ 79).", ru: "Не менее 40 лет, гражданин по рождению (§ 79)." }
       },
       {
-        id: 6, topic: "citizenship", free: false, ref: "Kodakondsuse seadus § 6",
+        id: 6, topic: "citizenship", ref: "Kodakondsuse seadus § 6",
         q: { et: "Kui kaua peab välismaalane elama Eestis enne kodakondsuse taotlemist?", en: "How long must a foreigner live in Estonia before applying for citizenship?", ru: "Сколько лет иностранец должен прожить в Эстонии перед подачей на гражданство?" },
         options: {
           et: ["Vähemalt 5 aastat", "Vähemalt 8 aastat püsivalt", "Vähemalt 10 aastat"],
@@ -116,6 +96,28 @@
         },
         correct: 1,
         exp: { et: "Vähemalt 8 aastat, viimased 5 aastat püsivalt (KS § 6).", en: "At least 8 years, last 5 permanently (Citizenship Act § 6).", ru: "Не менее 8 лет, последние 5 постоянно (§ 6 Закона о гражданстве)." }
+      },
+      {
+        id: 7, topic: "general", ref: "Põhiseadus § 56",
+        q: { et: "Kuidas teostab rahvas oma kõrgeimat riigivõimu?", en: "How does the people exercise its supreme power?", ru: "Как народ осуществляет свою высшую власть?" },
+        options: {
+          et: ["Ainult kohalike valimiste kaudu", "Riigikogu valimiste ja rahvahääletuse kaudu", "Ministrite kaudu"],
+          en: ["Through local elections only", "Through Riigikogu elections and referendums", "Through ministers"],
+          ru: ["Только через местные выборы", "Через выборы в Рийгикогу и референдумы", "Через министров"]
+        },
+        correct: 1,
+        exp: { et: "Rahvas teostab riigivõimu Riigikogu valimiste ja rahvahääletuse kaudu (§ 56).", en: "Through Riigikogu elections and referendums (§ 56).", ru: "Через выборы в Рийгикогу и референдумы (§ 56)." }
+      },
+      {
+        id: 8, topic: "courts", ref: "Põhiseadus § 148",
+        q: { et: "Millistest astmetest koosneb Eesti kohtusüsteem?", en: "What are the tiers of the Estonian court system?", ru: "Из каких инстанций состоит судебная система Эстонии?" },
+        options: {
+          et: ["Ainult Riigikohus", "Maa-, ringkonnakohtud ja Riigikohus", "Ainult maakohtud"],
+          en: ["Supreme Court only", "County, circuit courts and Supreme Court", "County courts only"],
+          ru: ["Только Верховный суд", "Уездные, окружные суды и Гос. суд", "Только уездные суды"]
+        },
+        correct: 1,
+        exp: { et: "Kohtusüsteem on kolmeastmeline (§ 148).", en: "Three-tier court system (§ 148).", ru: "Трехступенчатая судебная система (§ 148)." }
       }
     ];
 
@@ -127,9 +129,25 @@
       const [qIdx, setQIdx] = useState(0);
       const [picked, setPicked] = useState(null);
       const [score, setScore] = useState(0);
+      const [isFinished, setIsFinished] = useState(false);
 
-      const t = T[lang];
       const curQ = QUESTIONS[qIdx];
+
+      const handleNext = () => {
+        if (qIdx < QUESTIONS.length - 1) {
+          setQIdx(qIdx + 1);
+          setPicked(null);
+        } else {
+          setIsFinished(true);
+        }
+      };
+
+      const handlePrev = () => {
+        if (qIdx > 0) {
+          setQIdx(qIdx - 1);
+          setPicked(null);
+        }
+      };
 
       return (
         <div className="min-h-screen flex flex-col">
@@ -141,7 +159,7 @@
 
           <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
             <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-              <div onClick={() => setTab("home")} className="flex items-center gap-2.5 cursor-pointer">
+              <div onClick={() => { setTab("home"); setIsFinished(false); }} className="flex items-center gap-2.5 cursor-pointer">
                 <div className="w-9 h-9 rounded-lg bg-[#0072CE] text-white font-extrabold flex items-center justify-center">EE</div>
                 <div>
                   <span className="font-extrabold text-lg text-slate-900">Põhiseadus</span>
@@ -162,18 +180,18 @@
             </div>
           </header>
 
-          {tab === "home" && (
+          {tab === "home" && !isFinished && (
             <main className="flex-1 max-w-6xl mx-auto px-4 py-16 text-center space-y-6">
-              <span className="px-3 py-1 rounded-full bg-blue-50 text-[#0072CE] text-xs font-bold border border-blue-200">🇪🇪 {t.hero.badge}</span>
-              <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 max-w-3xl mx-auto">{t.hero.title}</h1>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto">{t.hero.subtitle}</p>
+              <span className="px-3 py-1 rounded-full bg-blue-50 text-[#0072CE] text-xs font-bold border border-blue-200">🇪🇪 Official HARNO 2026 Prep</span>
+              <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 max-w-3xl mx-auto">Pass the Estonian Constitution Exam on Your First Try</h1>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">All official questions, explanations in 3 languages, and full mock exams.</p>
               <div className="flex justify-center gap-4 pt-4">
-                <button onClick={() => setTab("practice")} className="px-8 py-4 rounded-xl bg-[#0072CE] text-white font-bold shadow-lg hover:bg-blue-700">{t.hero.cta1}</button>
+                <button onClick={() => setTab("practice")} className="px-8 py-4 rounded-xl bg-[#0072CE] text-white font-bold shadow-lg hover:bg-blue-700">Start Practice →</button>
               </div>
             </main>
           )}
 
-          {tab === "practice" && (
+          {tab === "practice" && !isFinished && (
             <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-10 space-y-6">
               <div className="bg-white p-6 rounded-2xl border shadow-sm space-y-4">
                 <div className="flex justify-between items-center text-xs font-bold text-[#0072CE]">
@@ -189,7 +207,7 @@
                       else if (picked === idx) st = "border-rose-400 bg-rose-50 text-rose-900";
                     }
                     return (
-                      <button key={idx} onClick={() => { setPicked(idx); if(idx === curQ.correct) setScore(s=>s+1); }} className={`w-full text-left p-4 rounded-xl border-2 font-semibold transition ${st}`}>
+                      <button key={idx} onClick={() => { if(picked === null) { setPicked(idx); if(idx === curQ.correct) setScore(s=>s+1); } }} className={`w-full text-left p-4 rounded-xl border-2 font-semibold transition ${st}`}>
                         {opt}
                       </button>
                     );
@@ -202,9 +220,25 @@
                   </div>
                 )}
                 <div className="flex justify-between pt-4 border-t">
-                  <button onClick={() => { setQIdx(Math.max(0, qIdx - 1)); setPicked(null); }} className="px-4 py-2 border rounded-lg text-sm font-bold">← Prev</button>
-                  <button onClick={() => { setQIdx(Math.min(QUESTIONS.length - 1, qIdx + 1)); setPicked(null); }} className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-bold">Next →</button>
+                  <button onClick={handlePrev} disabled={qIdx === 0} className="px-4 py-2 border rounded-lg text-sm font-bold disabled:opacity-40">← Prev</button>
+                  <button onClick={handleNext} className="px-6 py-2 bg-slate-900 text-white rounded-lg text-sm font-bold hover:bg-slate-800">
+                    {qIdx === QUESTIONS.length - 1 ? "Finish Test 🏁" : "Next →"}
+                  </button>
                 </div>
+              </div>
+            </main>
+          )}
+
+          {isFinished && (
+            <main className="flex-1 max-w-xl mx-auto w-full px-4 py-16 text-center space-y-6">
+              <div className="bg-white p-8 rounded-2xl border shadow-xl space-y-4">
+                <div className="text-5xl">🎉</div>
+                <h2 className="text-2xl font-extrabold text-slate-900">Practice Test Completed!</h2>
+                <p className="text-slate-600">You scored <span className="font-bold text-[#0072CE] text-xl">{score}</span> out of <span className="font-bold">{QUESTIONS.length}</span></p>
+                <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-sm text-slate-700">
+                  {score >= 6 ? "✅ Excellent! You are ready for the official exam." : "💡 Good effort! Review the constitution sections and try again."}
+                </div>
+                <button onClick={() => { setQIdx(0); setScore(0); setPicked(null); setIsFinished(false); }} className="w-full py-3 bg-[#0072CE] text-white font-bold rounded-xl hover:bg-blue-700">Try Again 🔄</button>
               </div>
             </main>
           )}
