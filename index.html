@@ -5,152 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Põhiseadus Pass — Eesti Kodakondsuse & Keele Eksam</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-  <div id="root"></div>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
 
-  <script type="text/babel">
-    const { useState } = React;
+  <!-- Top Offer Banner -->
+  <div class="bg-amber-500 text-slate-950 text-center text-xs font-extrabold py-2 px-4 shadow-inner">
+    ⚡ Special Launch Offer: 50% OFF All Passes · Ends Soon!
+  </div>
 
-    const QUESTIONS = [
-      {
-        id: 1, topic: "general", ref: "Põhiseadus § 1",
-        q: { et: "Kelle käes on Eesti Vabariigis kõrgeim riigivõim?", en: "Who holds the supreme power of state in Estonia?", ru: "Кому принадлежит высшая государственная власть в Эстонии?" },
-        options: {
-          et: ["Vabariigi Presidendil", "Rahval", "Riigikogul"],
-          en: ["The President", "The People (Rahvas)", "The Parliament (Riigikogu)"],
-          ru: ["Президенту", "Народу (Rahvas)", "Парламенту (Riigikogu)"]
-        },
-        correct: 1,
-        exp: { et: "Kõrgeima riigivõimu kandja on rahvas (§ 1).", en: "Supreme power is vested in the people (§ 1).", ru: "Носителем высшей гос. власти является народ (§ 1)." }
-      },
-      {
-        id: 2, topic: "general", ref: "Põhiseadus § 6",
-        q: { et: "Mis on Eesti Vabariigi riigikeel?", en: "What is the official state language of Estonia?", ru: "Какой язык является государственным в Эстонии?" },
-        options: {
-          et: ["Eesti ja inglise keel", "Eesti keel", "Eesti ja vene keel"],
-          en: ["Estonian and English", "Estonian (Eesti keel)", "Estonian and Russian"],
-          ru: ["Эстонский и английский", "Эстонский язык (Eesti keel)", "Эстонский и русский"]
-        },
-        correct: 1,
-        exp: { et: "Eesti riigikeel on eesti keel (§ 6).", en: "The official language is Estonian (§ 6).", ru: "Государственным языком является эстонский (§ 6)." }
-      },
-      {
-        id: 3, topic: "rights", ref: "Põhiseadus § 20",
-        q: { et: "Kui kaua võib isikut kinni pidada ilma kohtu loata?", en: "How long can a person be detained without a court warrant?", ru: "На какой срок можно задержать без санкции суда?" },
-        options: {
-          et: ["Kuni 24 tundi", "Kuni 48 tundi", "Kuni 72 tundi"],
-          en: ["Up to 24 hours", "Up to 48 hours", "Up to 72 hours"],
-          ru: ["До 24 часов", "До 48 часов", "До 72 часов"]
-        },
-        correct: 1,
-        exp: { et: "Ilma kohtu loata kuni 48 tundi (§ 20).", en: "Up to 48 hours without a warrant (§ 20).", ru: "Без санкции суда — до 48 часов (§ 20)." }
-      },
-      {
-        id: 4, topic: "riigikogu", ref: "Põhiseadus § 60",
-        q: { et: "Mitu liiget on Riigikogul ja kui kauaks nad valitakse?", en: "How many members does Riigikogu have and for how long?", ru: "Сколько депутатов в Рийгикогу и на какой срок?" },
-        options: {
-          et: ["101 liiget, 4 aastaks", "100 liiget, 5 aastaks", "120 liiget, 4 aastaks"],
-          en: ["101 members, 4 years", "100 members, 5 years", "120 members, 4 years"],
-          ru: ["101 депутат на 4 года", "100 депутатов на 5 лет", "120 депутатов на 4 года"]
-        },
-        correct: 0,
-        exp: { et: "Riigikogul on 101 liiget, 4 aastat (§ 60).", en: "101 members elected for 4 years (§ 60).", ru: "101 депутат, избираемый на 4 года (§ 60)." }
-      },
-      {
-        id: 5, topic: "president", ref: "Põhiseadus § 79",
-        q: { et: "Mis on Vabariigi Presidendi kandidaadi vanuse alampiir?", en: "What is the minimum age for a Presidential candidate?", ru: "Каков минимальный возраст кандидата в Президенты?" },
-        options: {
-          et: ["Vähemalt 35 aastat", "Vähemalt 40 aastat", "Vähemalt 45 aastat"],
-          en: ["At least 35 years", "At least 40 years", "At least 45 years"],
-          ru: ["Не менее 35 лет", "Не менее 40 лет", "Не менее 45 лет"]
-        },
-        correct: 1,
-        exp: { et: "Vähemalt 40-aastane sünnilt Eesti kodanik (§ 79).", en: "At least 40 years old, citizen by birth (§ 79).", ru: "Не менее 40 лет, гражданин по рождению (§ 79)." }
-      },
-      {
-        id: 6, topic: "citizenship", ref: "Kodakondsuse seadus § 6",
-        q: { et: "Kui kaua peab välismaalane elama Eestis enne kodakondsuse taotlemist?", en: "How long must a foreigner live in Estonia before applying for citizenship?", ru: "Сколько лет иностранец должен прожить в Эстонии перед подачей на гражданство?" },
-        options: {
-          et: ["Vähemalt 5 aastat", "Vähemalt 8 aastat püsivalt", "Vähemalt 10 aastat"],
-          en: ["At least 5 years", "At least 8 years permanently", "At least 10 years"],
-          ru: ["Не менее 5 лет", "Не менее 8 лет постоянно", "Не менее 10 лет"]
-        },
-        correct: 1,
-        exp: { et: "Vähemalt 8 aastat, viimased 5 aastat püsivalt (KS § 6).", en: "At least 8 years, last 5 permanently (Citizenship Act § 6).", ru: "Не менее 8 лет, последние 5 постоянно (§ 6 Закона о гражданстве)." }
-      }
-    ];
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 cursor-pointer">
+        <div class="w-9 h-9 rounded-lg bg-[#0072CE] text-white font-extrabold flex items-center justify-center">EE</div>
+        <div>
+          <span class="font-extrabold text-lg text-slate-900">Põhiseadus</span>
+          <span class="font-extrabold text-lg text-[#0072CE]">Pass</span>
+        </div>
+      </div>
+      <div>
+        <a href="#pricing" class="px-4 py-2 bg-[#0072CE] text-white rounded-lg text-xs font-bold hover:bg-blue-700">
+          GET PRO · 25.99 €
+        </a>
+      </div>
+    </div>
+  </header>
 
-    function App() {
-      const [lang, setLang] = useState("en");
-      const [tab, setTab] = useState("home");
-      const [isPro, setIsPro] = useState(false);
-      const [showPayModal, setShowPayModal] = useState(false);
-      const [selectedPlan, setSelectedPlan] = useState("full");
-      const [qIdx, setQIdx] = useState(0);
-      const [picked, setPicked] = useState(null);
-      const [score, setScore] = useState(0);
-      const [isFinished, setIsFinished] = useState(false);
+  <!-- Hero Section -->
+  <main class="flex-1 max-w-4xl mx-auto px-4 py-16 text-center space-y-6">
+    <span class="px-3 py-1 rounded-full bg-blue-50 text-[#0072CE] text-xs font-bold border border-blue-200">🇪🇪 Official HARNO 2026 Prep</span>
+    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">Pass the Estonian Constitution Exam on Your First Try</h1>
+    <p class="text-base text-slate-600 max-w-2xl mx-auto">All official questions, explanations in 3 languages, and full mock exams backed by our 10-day money-back guarantee.</p>
+    
+    <div class="pt-4">
+      <a href="#pricing" class="inline-block px-8 py-4 rounded-xl bg-[#0072CE] text-white font-bold shadow-lg hover:bg-blue-700 text-base">
+        Start Practice & Unlock Passes →
+      </a>
+    </div>
 
-      const curQ = QUESTIONS[qIdx];
-
-      const handleNext = () => {
-        if (qIdx < QUESTIONS.length - 1) {
-          setQIdx(qIdx + 1);
-          setPicked(null);
-        } else {
-          setIsFinished(true);
-        }
-      };
-
-      return (
-        <div className="min-h-screen flex flex-col">
-          <div className="bg-amber-500 text-slate-950 text-center text-xs font-extrabold py-2 px-4 shadow-inner">
-            ⚡ Special Launch Offer: 50% OFF All Passes · Ends Soon!
+    <!-- Pricing Section -->
+    <div id="pricing" class="pt-16 max-w-md mx-auto space-y-6">
+      <h2 class="text-2xl font-extrabold text-slate-900">Choose Your Pass</h2>
+      
+      <div class="grid grid-cols-1 gap-4 text-left">
+        <!-- Basic Pass -->
+        <div class="p-5 rounded-2xl border-2 border-slate-200 bg-white flex flex-col justify-between space-y-4 shadow-sm">
+          <div>
+            <div class="font-extrabold text-base text-slate-900">Basic Pass</div>
+            <div class="text-2xl font-extrabold text-[#0072CE] mt-1">9.99 €</div>
+            <p class="text-xs text-slate-600 mt-2">All Constitution questions & mock exams for basic practice.</p>
           </div>
+          <a href="https://gumroad.com" target="_blank" rel="noreferrer" class="block text-center py-2.5 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800">
+            Get Basic Pass
+          </a>
+        </div>
 
-          <div className="h-1.5 w-full flex">
-            <div className="flex-1 bg-[#0072CE]"></div>
-            <div className="flex-1 bg-slate-900"></div>
-            <div className="flex-1 bg-white border-b border-slate-200"></div>
+        <!-- Full PRO Pass -->
+        <div class="p-5 rounded-2xl border-2 border-[#0072CE] bg-blue-50/40 flex flex-col justify-between space-y-4 relative shadow-md">
+          <span class="absolute -top-3 right-4 bg-[#0072CE] text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full shadow">BEST VALUE</span>
+          <div>
+            <div class="font-extrabold text-base text-slate-900">Full PRO Pass</div>
+            <div class="text-2xl font-extrabold text-[#0072CE] mt-1">25.99 €</div>
+            <p class="text-xs text-slate-600 mt-2">Full questions + B1 Estonian Course + PPA Templates + Success Guarantee.</p>
           </div>
+          <a href="https://gumroad.com" target="_blank" rel="noreferrer" class="block text-center py-3 bg-[#0072CE] text-white text-xs font-bold rounded-xl hover:bg-blue-700 shadow">
+            Get Full PRO Pass →
+          </a>
+        </div>
+      </div>
 
-          <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
-            <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-              <div onClick={() => { setTab("home"); setIsFinished(false); }} className="flex items-center gap-2.5 cursor-pointer">
-                <div className="w-9 h-9 rounded-lg bg-[#0072CE] text-white font-extrabold flex items-center justify-center">EE</div>
-                <div>
-                  <span className="font-extrabold text-lg text-slate-900">Põhiseadus</span>
-                  <span className="font-extrabold text-lg text-[#0072CE]">Pass</span>
-                </div>
-              </div>
+      <div class="text-xs text-slate-500 font-medium pt-2">
+        🛡️ 10-Day Money-Back Guarantee. Zero risk.
+      </div>
+    </div>
+  </main>
 
-              <div className="flex items-center gap-3">
-                <div className="flex bg-slate-100 p-1 rounded-lg border">
-                  {["et", "en", "ru"].map((l) => (
-                    <button key={l} onClick={() => setLang(l)} className={`px-2.5 py-1 rounded text-xs font-bold uppercase ${lang === l ? "bg-white text-[#0072CE] shadow" : "text-slate-600"}`}>{l}</button>
-                  ))}
-                </div>
-                <button onClick={() => { setSelectedPlan("full"); setShowPayModal(true); }} className={`px-4 py-2 rounded-lg text-xs font-bold ${isPro ? "bg-emerald-100 text-emerald-800" : "bg-[#0072CE] text-white"}`}>
-                  {isPro ? "✓ PRO ACTIVE" : "GET PRO · 25.99 €"}
-                </button>
-              </div>
-            </div>
-          </header>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+    © 2026 Põhiseadus Pass. All rights reserved.
+  </footer>
 
-          {tab === "home" && !isFinished && (
-            <main className="flex-1 max-w-6xl mx-auto px-4 py-16 text-center space-y-8">
-              <span className="px-3 py-1 rounded-full bg-blue-50 text-[#0072CE] text-xs font-bold border border-blue-200">🇪🇪 Official HARNO 2026 Prep</span>
-              <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 max-w-3xl mx-auto">Pass the Estonian Constitution Exam on Your First Try</h1>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto">All official questions, explanations in 3 languages, and full mock exams backed by our 10-day money-back guarantee.</p>
-              
-              <div className="flex justify-center gap-4 pt-4">
-                <button onClick={() => setTab("practice")} className="px-8 py-4 rounded-xl bg-[#0072CE] text-white font-bold shadow-lg hover:bg-blue-700">Start Practice →</button>
-              </div>
-
-              <div className="pt-12 grid grid-cols-1 md:grid-cols-3
+</body>
+</html>
