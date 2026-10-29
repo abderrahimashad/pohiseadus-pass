@@ -8,144 +8,44 @@
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+  <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
 <body class="bg-slate-50 text-slate-900">
   <div id="root"></div>
 
   <script type="text/babel">
-    const { useState, useEffect, useMemo } = React;
+    const { useState, useEffect } = React;
 
-    // --- TRANSLATIONS (ET / EN / RU) ---
     const T = {
       et: {
-        nav: { home: "Avaleht", practice: "Praktika", exam: "Proovieksam", lang: "Eesti keel B1/A2", constitution: "Põhiseadus §", pricing: "Hinnad" },
+        nav: { home: "Avaleht", practice: "Praktika", exam: "Proovieksam", lang: "Eesti keel B1/A2", pricing: "Hinnad" },
         hero: {
-          badge: "Kodakondsuse ja pikaajalise elamisloa taotlejatele",
-          title: "Soorita Põhiseaduse eksam enesekindlalt",
-          subtitle: "Õpi Eesti Vabariigi põhiseaduse ja kodakondsuse seaduse eksamiks nädalatega, mitte kuudega. Kõik HARNO teemad, selgitused ja B1/A2 keelekursus.",
-          cta1: "Alusta tasuta praktikat →",
-          cta2: "Vaata hindu",
-          liveTitle: "Proovi kohe: Päris eksamiküsimus",
-          liveSub: "Vali õige vastus ja vaata kohe selgitust ning § viidet"
-        },
-        roadmap: {
-          title: "Sinu teekond kodakondsuseni",
-          sub: "Kuus peatust tänasest eksamipäevani.",
-          steps: [
-            { place: "Tallinn · Toompea & Pikk Hermann", title: "Tea, mis sind ees ootab", desc: "24 küsimust, igaühel kolm vastusevarianti. Vähemalt 18 õiget vastust tähendab läbimist (75%). Eksam toimub eesti keeles (45 min)." },
-            { place: "Riigikogu hoone", title: "Harjuta ametlike küsimustega", desc: "Kõik eksamiteemad koos selge selgituse ja täpse Põhiseaduse või Kodakondsuse seaduse paragrahviga (§)." },
-            { place: "Tartu Ülikool", title: "Õpi üks teema korraga", desc: "Riigikord, põhiõigused, Riigikogu, Vabariigi President, Vabariigi Valitsus, kohtud ja kodakondsuse seadus." },
-            { place: "Narva linnus", title: "Soorita eksam enne eksamit", desc: "Ajapiiranguga proovieksamid (45 min) ametlikus HARNO formaadis koos avatud Põhiseaduse tekstiga." },
-            { place: "Kuressaare piiskopilinnus", title: "Ära unusta keeleeksamit", desc: "Pikaajalise elamisloa jaoks on vaja A2 ja kodakondsuse jaoks B1 eesti keele eksamit. Ettevalmistus on samuti siin." },
-            { place: "Eesti Vabariigi pass", title: "Valmis eksamipäevaks", desc: "Alusta tasuta proovitestiga — registreerimine pole vajalik." }
-          ]
-        },
-        stamps: {
-          title: "Sinu pass vajab kahte templit",
-          sub: "Enamik valmistub põhiseaduse eksamiks, kuid avastab keeleeksami liiga hilja. Need on kaks eraldi HARNO eksamit.",
-          s1Title: "PÕHISEADUSE JA KODAKONDSUSE SEADUSE EKSAM",
-          s1Meta: "24 küsimust · 18 läbimiseks (75%) · 45 min · Avatud tekst",
-          s1Btn: "Harjuta Põhiseaduse küsimusi",
-          s2Title: "EESTI KEELE TASEMEEKSAM (A2 / B1)",
-          s2Meta: "Kirjutamine · Kuulamine · Lugemine · Rääkimine · HARNO",
-          s2Btn: "Ava keeleeksami moodul",
-          bundle: "Valmistu mõlemaks templiks ühe pääsmega: 3 kuud – 29,99 € (Ühekordne makse)"
-        },
-        pricing: {
-          title: "Vali oma ettevalmistuspakett",
-          sub: "Ühekordne makse — ei mingeid peidetud tellimusi ega automaatset pikenemist.",
-          p1: { name: "Tasuta Demo", price: "0 €", period: "Igavesti", btn: "Alusta tasuta", features: ["12 ametlikku näidisküsimust", "1 proovieksam", "Põhiseaduse § otsing", "A2/B1 näidisharjutus"] },
-          p2: { name: "Põhiseadus Pass", price: "19,99 €", period: "90 päeva ligipääs", btn: "Osta Põhiseadus Pass", features: ["Kõik eksamiküsimused ja teemad", "Piiramatu arv proovieksameid", "Selgitused ET / EN / RU keeles", "Avatud § tekst eksami ajal"] },
-          p3: { name: "Täispakett (Pass + B1 Keel)", price: "29,99 €", period: "90 päeva ligipääs", badge: "POPULAARSEIM", btn: "Osta mõlema eksami pääse", features: ["Kõik Põhiseadus Passi võimalused", "Täielik B1/A2 eesti keele kursus", "PPA e-kirjade ja rääkimise mudelid", "Eesti keele hääldus (Audio TTS)"] }
+          badge: "Ametlik HARNO 2026 ettevalmistus",
+          title: "Soorita Põhiseaduse eksam esimese korraga",
+          subtitle: "Kõik ametlikud küsimused, selgitused 3 keeles, ajapiiranguga proovieksamid ja keelekursus.",
+          cta1: "Alusta harjutamist →",
+          cta2: "Vaata hindu"
         }
       },
       en: {
-        nav: { home: "Home", practice: "Practice", exam: "Mock Exam", lang: "Estonian B1/A2", constitution: "Constitution §", pricing: "Pricing" },
+        nav: { home: "Home", practice: "Practice", exam: "Mock Exam", lang: "Estonian B1/A2", pricing: "Pricing" },
         hero: {
-          badge: "For Estonian Citizenship & Permanent Residence Applicants",
-          title: "Pass the Estonian Constitution Exam with Confidence",
-          subtitle: "Prepare for the Estonian Constitution and Citizenship Act exam in weeks, not months. Full HARNO question bank, explanations in English, Russian & Estonian, plus B1/A2 language prep.",
-          cta1: "Start Free Practice Test →",
-          cta2: "View Pricing",
-          liveTitle: "Try it right now: Official Exam Question",
-          liveSub: "Select an answer to see instant explanation in your language and § reference"
-        },
-        roadmap: {
-          title: "Your Journey to Estonian Citizenship",
-          sub: "Six milestones from today until exam day.",
-          steps: [
-            { place: "Tallinn · Toompea & Pikk Hermann", title: "Know what awaits you", desc: "24 multiple-choice questions. Answer at least 18 correctly (75%) to pass. Official exam is in Estonian (45 minutes)." },
-            { place: "Riigikogu (Parliament)", title: "Practice with official questions", desc: "Complete question bank with simple explanations in English, Russian & Estonian and exact § article references." },
-            { place: "University of Tartu", title: "Master one topic at a time", desc: "General Provisions, Fundamental Rights, Riigikogu, President, Government, Courts, and the Citizenship Act." },
-            { place: "Narva Castle", title: "Pass the exam before the exam", desc: "Timed 45-minute mock exams in official HARNO format with open-book Constitution lookup." },
-            { place: "Kuressaare Castle", title: "Don't forget the language exam", desc: "Permanent residence requires A2 and citizenship requires B1 Estonian exam. Full prep module included here." },
-            { place: "Estonian Passport", title: "Ready for exam day", desc: "Start with a free practice test right now — no registration required." }
-          ]
-        },
-        stamps: {
-          title: "Your Passport Needs Two Stamps",
-          sub: "Most applicants prepare for the Constitution exam and discover the language exam too late. They are two separate HARNO exams.",
-          s1Title: "CONSTITUTION & CITIZENSHIP ACT EXAM",
-          s1Meta: "24 questions · 18 to pass (75%) · 45 min · Open-book §",
-          s1Btn: "Practice Constitution Questions",
-          s2Title: "ESTONIAN LANGUAGE EXAM (LEVEL A2 / B1)",
-          s2Meta: "Writing · Listening · Reading · Speaking · Official HARNO format",
-          s2Btn: "Open Language Prep Course",
-          bundle: "Prepare for both stamps with one pass: 3 months – €29.99 (One-time payment)"
-        },
-        pricing: {
-          title: "Simple, Transparent Pricing",
-          sub: "One-time payment — no recurring subscriptions or hidden fees.",
-          p1: { name: "Free Starter", price: "€0", period: "Forever", btn: "Start Free", features: ["12 official practice questions", "1 timed mock exam", "Constitution § quick search", "A2/B1 sample lessons"] },
-          p2: { name: "Constitution Pass", price: "€19.99", period: "90-day access", btn: "Get Constitution Pass", features: ["Full question bank across 6 topics", "Unlimited timed HARNO mock exams", "Explanations in EN / RU / ET", "Open-book § lookup simulator"] },
-          p3: { name: "Full Pass (Constitution + B1)", price: "€29.99", period: "90-day access", badge: "MOST POPULAR", btn: "Get Both Exams Pass", features: ["Everything in Constitution Pass", "Complete A2 & B1 Estonian course", "Official PPA email & speaking templates", "Native Estonian audio pronunciation"] }
+          badge: "Official HARNO 2026 Prep",
+          title: "Pass the Estonian Constitution Exam on Your First Try",
+          subtitle: "All official questions, explanations in 3 languages, timed mock exams, and language prep.",
+          cta1: "Start Practice →",
+          cta2: "View Pricing"
         }
       },
       ru: {
-        nav: { home: "Главная", practice: "Практика", exam: "Пробный экзамен", lang: "Язык B1/A2", constitution: "Конституция §", pricing: "Цены" },
+        nav: { home: "Главная", practice: "Практика", exam: "Экзамен", lang: "Язык B1/A2", pricing: "Цены" },
         hero: {
-          badge: "Для претендентов на гражданство и ПМЖ в Эстонии",
+          badge: "Официальная подготовка HARNO 2026",
           title: "Сдайте экзамен по Конституции Эстонии с первого раза",
-          subtitle: "Подготовьтесь к экзамену на знание Конституции ЭР и Закона о гражданстве за недели, а не месяцы. Все темы HARNO, понятные объяснения на русском языке и курс языка B1/A2.",
-          cta1: "Начать бесплатный тест →",
-          cta2: "Посмотреть цены",
-          liveTitle: "Попробуйте прямо сейчас: Реальный вопрос",
-          liveSub: "Выберите ответ и сразу увидите объяснение на русском и статью §"
-        },
-        roadmap: {
-          title: "Ваш путь к гражданству Эстонии",
-          sub: "Шесть остановок от сегодняшнего дня до успешной сдачи экзамена.",
-          steps: [
-            { place: "Таллинн · Тоомпеа и Длинный Герман", title: "Знайте формат экзамена", desc: "24 вопроса с тремя вариантами ответа. Для сдачи нужно 18 правильных ответов (75%). Экзамен длится 45 минут на эстонском языке." },
-            { place: "Здание Рийгикогу", title: "Тренируйтесь по официальным темам", desc: "Все вопросы с подробным разбором на русском, английском и эстонском языках и точной ссылкой на § закона." },
-            { place: "Тартуский университет", title: "Учите тему за темой", desc: "Государственное устройство, права и свободы, Рийгикогу, Президент, Правительство, суды и Закон о гражданстве." },
-            { place: "Нарвский замок", title: "Сдайте экзамен до экзамена", desc: "Пробные тесты на время (45 мин) в точном формате HARNO с возможностью открывать текст Конституции." },
-            { place: "Замок Курессааре", title: "Не забудьте про языковой экзамен", desc: "Для ПМЖ нужен уровень A2, для гражданства — B1. Практический курс эстонского языка также включен." },
-            { place: "Паспорт Эстонской Республики", title: "Готовность к экзамену 100%", desc: "Начните с бесплатного пробного теста прямо сейчас — без регистрации." }
-          ]
-        },
-        stamps: {
-          title: "Вашему паспорту нужны две печати",
-          sub: "Многие готовятся только к Конституции и слишком поздно узнают о языковом экзамене. Это два разных экзамена в HARNO.",
-          s1Title: "ЭКЗАМЕН ПО КОНСТИТУЦИИ И ЗАКОНУ О ГРАЖДАНСТВЕ",
-          s1Meta: "24 вопроса · 18 для сдачи (75%) · 45 мин · Открытый текст §",
-          s1Btn: "Тренировать вопросы Конституции",
-          s2Title: "УРОВНЕВЫЙ ЭКЗАМЕН ПО ЭСТОНСКОМУ ЯЗЫКУ (A2 / B1)",
-          s2Meta: "Письмо · Аудирование · Чтение · Устная часть · Формат HARNO",
-          s2Btn: "Открыть курс языка B1/A2",
-          bundle: "Подготовьтесь к обоим экзаменам с одним доступом: 3 месяца – 29,99 € (Разовый платеж)"
-        },
-        pricing: {
-          title: "Простые и понятные тарифы",
-          sub: "Единоразовый платеж — никаких автопродлений и скрытых списаний.",
-          p1: { name: "Бесплатный старт", price: "0 €", period: "Навсегда", btn: "Начать бесплатно", features: ["12 бесплатных вопросов", "1 пробный экзамен", "Поиск по статьям Конституции §", "Демо-уроки языка A2/B1"] },
-          p2: { name: "Põhiseadus Pass", price: "19,99 €", period: "Доступ на 90 дней", btn: "Купить Põhiseadus Pass", features: ["Все вопросы по 6 официальным темам", "Безлимитные пробные экзамены", "Перевод и разбор на RU / EN / ET", "Тренажер поиска по § Конституции"] },
-          p3: { name: "Полный пакет (Конституция + B1)", price: "29,99 €", period: "Доступ на 90 дней", badge: "ВЫБОР УЧЕНИКОВ", btn: "Купить доступ к 2 экзаменам", features: ["Всё из пакета Põhiseadus Pass", "Полный тренажер эстонского A2/B1", "Шаблоны писем в PPA и диалогов", "Озвучка вопросов на эстонском"] }
+          subtitle: "Все официальные вопросы, разбор на 3 языках, пробные тесты на время и языковой курс.",
+          cta1: "Начать практику →",
+          cta2: "Цены"
         }
       }
     };
@@ -153,193 +53,69 @@
     const QUESTIONS = [
       {
         id: 1, topic: "general", free: true, ref: "Põhiseadus § 1",
-        q: {
-          et: "Kelle käes on Eesti Vabariigis kõrgeim riigivõim?",
-          en: "Who holds the supreme power of state in the Republic of Estonia?",
-          ru: "Кому принадлежит высшая государственная власть в Эстонской Республике?"
-        },
+        q: { et: "Kelle käes on Eesti Vabariigis kõrgeim riigivõim?", en: "Who holds the supreme power of state in Estonia?", ru: "Кому принадлежит высшая государственная власть в Эстонии?" },
         options: {
           et: ["Vabariigi Presidendil", "Rahval", "Riigikogul"],
-          en: ["The President of the Republic", "The People (Rahvas)", "The Parliament (Riigikogu)"],
-          ru: ["Президенту Республики", "Народу (Rahvas)", "Парламенту (Riigikogu)"]
+          en: ["The President", "The People (Rahvas)", "The Parliament (Riigikogu)"],
+          ru: ["Президенту", "Народу (Rahvas)", "Парламенту (Riigikogu)"]
         },
         correct: 1,
-        exp: {
-          et: "Põhiseaduse § 1 sätestab, et Eesti on iseseisev ja sõltumatu demokraatlik vabariik, kus kõrgeima riigivõimu kandja on rahvas.",
-          en: "Article 1 of the Constitution states that Estonia is an independent and sovereign democratic republic wherein the supreme power of state is vested in the people.",
-          ru: "Статья 1 Конституции гласит: Эстония — самостоятельная и независимая демократическая республика, где носителем высшей государственной власти является народ."
-        }
+        exp: { et: "Kõrgeima riigivõimu kandja on rahvas (§ 1).", en: "Supreme power is vested in the people (§ 1).", ru: "Носителем высшей гос. власти является народ (§ 1)." }
       },
       {
         id: 2, topic: "general", free: true, ref: "Põhiseadus § 6",
-        q: {
-          et: "Mis on Eesti Vabariigi riigikeel?",
-          en: "What is the official state language of the Republic of Estonia?",
-          ru: "Какой язык является государственным языком Эстонской Республики?"
-        },
+        q: { et: "Mis on Eesti Vabariigi riigikeel?", en: "What is the official state language of Estonia?", ru: "Какой язык является государственным в Эстонии?" },
         options: {
-          et: ["Eesti ja inglise keel", "Eesti keel", "Eesti, vene ja inglise keel"],
-          en: ["Estonian and English", "Estonian (Eesti keel)", "Estonian, Russian, and English"],
-          ru: ["Эстонский и английский", "Эстонский язык (Eesti keel)", "Эстонский, русский и английский"]
+          et: ["Eesti ja inglise keel", "Eesti keel", "Eesti ja vene keel"],
+          en: ["Estonian and English", "Estonian (Eesti keel)", "Estonian and Russian"],
+          ru: ["Эстонский и английский", "Эстонский язык (Eesti keel)", "Эстонский и русский"]
         },
         correct: 1,
-        exp: {
-          et: "Põhiseaduse § 6 kohaselt on Eesti riigikeel eesti keel.",
-          en: "According to § 6 of the Constitution, the official language of Estonia is Estonian.",
-          ru: "Согласно § 6 Конституции, государственным языком Эстонии является эстонский язык."
-        }
+        exp: { et: "Eesti riigikeel on eesti keel (§ 6).", en: "The official language is Estonian (§ 6).", ru: "Государственным языком является эстонский (§ 6)." }
       },
       {
         id: 3, topic: "rights", free: true, ref: "Põhiseadus § 20",
-        q: {
-          et: "Kui kaua võib isikut kinni pidada ilma kohtu loata?",
-          en: "How long may a person be detained in custody without a court warrant?",
-          ru: "На какой максимальный срок человек может быть задержан без санкции суда?"
-        },
+        q: { et: "Kui kaua võib isikut kinni pidada ilma kohtu loata?", en: "How long can a person be detained without a court warrant?", ru: "На какой срок можно задержать без санкции суда?" },
         options: {
           et: ["Kuni 24 tundi", "Kuni 48 tundi", "Kuni 72 tundi"],
           en: ["Up to 24 hours", "Up to 48 hours", "Up to 72 hours"],
           ru: ["До 24 часов", "До 48 часов", "До 72 часов"]
         },
         correct: 1,
-        exp: {
-          et: "Ilma kohtu loata ei tohi kedagi vahi all pidada kauem kui 48 tundi (§ 21). Otsus tuleb teha teatavaks talle arusaadavas keeles.",
-          en: "No one may be held in custody for more than 48 hours without a court authorization (§ 21).",
-          ru: "Без разрешения суда никто не может содержаться под стражей более 48 часов (§ 21)."
-        }
+        exp: { et: "Ilma kohtu loata kuni 48 tundi (§ 20).", en: "Up to 48 hours without a warrant (§ 20).", ru: "Без санкции суда — до 48 часов (§ 20)." }
       },
       {
-        id: 4, topic: "riigikogu", free: true, ref: "Põhiseadus § 60",
-        q: {
-          et: "Mitu liiget on Riigikogul ja kui kauaks nad valitakse?",
-          en: "How many members does the Riigikogu (Parliament) have and for what term are they elected?",
-          ru: "Сколько депутатов в Рийгикогу и на какой срок они избираются?"
-        },
+        id: 4, topic: "riigikogu", free: false, ref: "Põhiseadus § 60",
+        q: { et: "Mitu liiget on Riigikogul ja kui kauaks nad valitakse?", en: "How many members does Riigikogu have and for how long?", ru: "Сколько депутатов в Рийгикогу и на какой срок?" },
         options: {
           et: ["101 liiget, 4 aastaks", "100 liiget, 5 aastaks", "120 liiget, 4 aastaks"],
-          en: ["101 members for 4 years", "100 members for 5 years", "120 members for 4 years"],
+          en: ["101 members, 4 years", "100 members, 5 years", "120 members, 4 years"],
           ru: ["101 депутат на 4 года", "100 депутатов на 5 лет", "120 депутатов на 4 года"]
         },
         correct: 0,
-        exp: {
-          et: "Riigikogul on 101 liiget, kes valitakse vabadel valimistel proportsionaalsuse põhimõtte alusel 4 aastaks (§ 60).",
-          en: "The Riigikogu comprises 101 members elected in free elections for a 4-year term (§ 60).",
-          ru: "В состав Рийгикогу входит 101 депутат, избираемый на свободных выборах сроком на 4 года (§ 60)."
-        }
+        exp: { et: "Riigikogul on 101 liiget, 4 aastat (§ 60).", en: "101 members elected for 4 years (§ 60).", ru: "101 депутат, избираемый на 4 года (§ 60)." }
       },
       {
-        id: 5, topic: "president", free: true, ref: "Põhiseadus § 79",
-        q: {
-          et: "Mis on Vabariigi Presidendi kandidaadi vanuse alampiir ja ametiaja pikkus?",
-          en: "What is the minimum age for a Presidential candidate and the length of their term?",
-          ru: "Каков минимальный возраст кандидата в Президенты ЭР и срок его полномочий?"
-        },
+        id: 5, topic: "president", free: false, ref: "Põhiseadus § 79",
+        q: { et: "Mis on Vabariigi Presidendi kandidaadi vanuse alampiir?", en: "What is the minimum age for a Presidential candidate?", ru: "Каков минимальный возраст кандидата в Президенты?" },
         options: {
-          et: ["Vähemalt 35-aastane, 4 aastaks", "Vähemalt 40-aastane sünnilt Eesti kodanik, 5 aastaks", "Vähemalt 45-aastane, 6 aastaks"],
-          en: ["At least 35 years old, 4 years", "At least 40 years old Estonian citizen by birth, 5 years", "At least 45 years old, 6 years"],
-          ru: ["Не моложе 35 лет, на 4 года", "Не моложе 40 лет, гражданин по рождению, на 5 лет", "Не моложе 45 лет, на 6 лет"]
+          et: ["Vähemalt 35 aastat", "Vähemalt 40 aastat", "Vähemalt 45 aastat"],
+          en: ["At least 35 years", "At least 40 years", "At least 45 years"],
+          ru: ["Не менее 35 лет", "Не менее 40 лет", "Не менее 45 лет"]
         },
         correct: 1,
-        exp: {
-          et: "Presidendikandidaadiks võib seada sünnilt Eesti kodaniku, kes on vähemalt 40 aastat vana. President valitakse 5 aastaks ja mitte rohkem kui kaheks ametiajaks järjest (§ 79).",
-          en: "A candidate for President must be an Estonian citizen by birth and at least 40 years of age, elected for 5 years (§ 79).",
-          ru: "Кандидатом в Президенты может быть гражданин Эстонии по рождению не моложе 40 лет. Избирается на 5 лет (§ 79)."
-        }
+        exp: { et: "Vähemalt 40-aastane sünnilt Eesti kodanik (§ 79).", en: "At least 40 years old, citizen by birth (§ 79).", ru: "Не менее 40 лет, гражданин по рождению (§ 79)." }
       },
       {
-        id: 6, topic: "courts", free: true, ref: "Põhiseadus § 148",
-        q: {
-          et: "Millistest astmetest koosneb Eesti kohtusüsteem?",
-          en: "What are the three tiers of the Estonian court system?",
-          ru: "Из каких трех инстанций состоит судебная система Эстонии?"
-        },
+        id: 6, topic: "citizenship", free: false, ref: "Kodakondsuse seadus § 6",
+        q: { et: "Kui kaua peab välismaalane elama Eestis enne kodakondsuse taotlemist?", en: "How long must a foreigner live in Estonia before applying for citizenship?", ru: "Сколько лет иностранец должен прожить в Эстонии перед подачей на гражданство?" },
         options: {
-          et: ["Maa- ja halduskohtud, ringkonnakohtud ja Riigikohus", "Rahvakohtud, apellatsioonikohtud ja Konstitutsioonikohus", "Linnakohtud, maakohtud ja Ülemkohus"],
-          en: ["County & administrative courts, circuit courts, and the Supreme Court (Riigikohus)", "People's courts, appellate courts, and Constitutional Court", "City courts, county courts, and High Court"],
-          ru: ["Уездные и административные суды, окружные суды и Государственный суд (Riigikohus)", "Народные суды, апелляционные суды и Конституционный суд", "Городские суды, уездные суды и Верховный суд"]
-        },
-        correct: 0,
-        exp: {
-          et: "Kohtusüsteem on kolmeastmeline: 1) maa- ja halduskohtud, 2) ringkonnakohtud, 3) Riigikohus (§ 148). Kohtunikud nimetatakse ametisse eluaegsena.",
-          en: "Estonia has a 3-tier court system: County/Administrative courts, Circuit courts, and the Supreme Court (Riigikohus) (§ 148).",
-          ru: "Судебная система состоит из: 1) уездных и административных судов, 2) окружных судов и 3) Государственного суда (§ 148)."
-        }
-      },
-      {
-        id: 7, topic: "citizenship", free: true, ref: "Kodakondsuse seadus § 6",
-        q: {
-          et: "Kui kaua peab välismaalane olema elanud Eestis elamisloa alusel enne kodakondsuse taotlemist?",
-          en: "How long must a foreigner have lived in Estonia on a residence permit before applying for citizenship?",
-          ru: "Сколько лет иностранец должен прожить в Эстонии на основании вида на жительство перед подачей на гражданство?"
-        },
-        options: {
-          et: ["Vähemalt 5 aastat, kuid mitte vähem kui 3 aastat püsivalt", "Vähemalt 8 aastat, millest viimased 5 aastat püsivalt", "Vähemalt 10 aastat järjest"],
-          en: ["At least 5 years, including 3 years permanently", "At least 8 years, of which the last 5 years permanently", "At least 10 consecutive years"],
-          ru: ["Не менее 5 лет, из них 3 года постоянно", "Не менее 8 лет, из которых последние 5 лет — постоянно", "Не менее 10 лет подряд"]
+          et: ["Vähemalt 5 aastat", "Vähemalt 8 aastat püsivalt", "Vähemalt 10 aastat"],
+          en: ["At least 5 years", "At least 8 years permanently", "At least 10 years"],
+          ru: ["Не менее 5 лет", "Не менее 8 лет постоянно", "Не менее 10 лет"]
         },
         correct: 1,
-        exp: {
-          et: "Kodakondsuse seaduse § 6 kohaselt peab taotleja olema elanud Eestis elamisloa või elamisõiguse alusel vähemalt 8 aastat, millest viimased 5 aastat püsivalt, ning omama pikaajalise elaniku elamisluba.",
-          en: "Under § 6 of the Citizenship Act, an applicant must have lived in Estonia for at least 8 years, with the last 5 years on a permanent basis.",
-          ru: "Согласно § 6 Закона о гражданстве, заявитель должен прожить в Эстонии не менее 8 лет, из которых последние 5 лет — постоянно."
-        }
-      },
-      {
-        id: 8, topic: "general", free: false, ref: "Põhiseadus § 56",
-        q: {
-          et: "Kuidas teostab rahvas oma kõrgeimat riigivõimu?",
-          en: "How does the people exercise its supreme power of state?",
-          ru: "Каким образом народ осуществляет свою высшую государственную власть?"
-        },
-        options: {
-          et: ["Ainult kohaliku omavalitsuse valimiste kaudu", "Riigikogu valimiste ja rahvahääletuse kaudu", "Vabariigi Presidendi otsevalimiste kaudu"],
-          en: ["Only through local government elections", "Through Riigikogu elections and referendums", "Through direct presidential elections"],
-          ru: ["Только через муниципальные выборы", "Через выборы в Рийгикогу и референдум (rahvahääletus)", "Через прямые выборы Президента"]
-        },
-        correct: 1,
-        exp: {
-          et: "Kõrgeimat riigivõimu teostab rahvas hääleõiguslike kodanike kaudu Riigikogu valimisega ja rahvahääletusega (§ 56).",
-          en: "Supreme power is exercised by citizens with the right to vote through electing the Riigikogu and through referendums (§ 56).",
-          ru: "Высшую государственную власть народ осуществляет через граждан с правом голоса путем выборов в Рийгикогу и референдума (§ 56)."
-        }
-      },
-      {
-        id: 9, topic: "rights", free: false, ref: "Põhiseadus § 57",
-        q: {
-          et: "Mis vanusest on Eesti kodanikul õigus hääletada Riigikogu valimistel ja kohalikel valimistel?",
-          en: "At what age can an Estonian citizen vote in Riigikogu elections vs. local elections?",
-          ru: "С какого возраста гражданин может голосовать на выборах в Рийгикогу и на муниципальных выборах?"
-        },
-        options: {
-          et: ["18-aastaselt Riigikogu valimistel ja 16-aastaselt kohalikel valimistel", "Mõlemal juhul 18-aastaselt", "16-aastaselt Riigikogu valimistel ja 18-aastaselt kohalikel valimistel"],
-          en: ["18 for Riigikogu elections and 16 for local council elections", "18 for both elections", "16 for Riigikogu and 18 for local elections"],
-          ru: ["С 18 лет в Рийгикогу и с 16 лет на выборах местного самоуправления", "В обоих случаях с 18 лет", "С 16 лет в Рийгикогу и с 18 лет на местных выборах"]
-        },
-        correct: 0,
-        exp: {
-          et: "Riigikogu valimistel on hääleõiguslik 18-aastane Eesti kodanik (§ 57). Kohaliku omavalitsuse volikogu valimistel on hääleõiguslik vähemalt 16-aastane püsielanik (§ 156).",
-          en: "Voting age is 18 for Parliament (Riigikogu) under § 57, and 16 for local municipal elections under § 156.",
-          ru: "На выборах в Рийгикогу право голоса с 18 лет (§ 57), а на муниципальных выборах — с 16 лет (§ 156)."
-        }
-      },
-      {
-        id: 10, topic: "citizenship", free: false, ref: "Kodakondsuse seadus § 1",
-        q: {
-          et: "Kas Eesti kodanik võib olla samal ajal mõne muu riigi kodakondsuses?",
-          en: "May an Estonian citizen simultaneously hold the citizenship of another state?",
-          ru: "Может ли гражданин Эстонии одновременно состоять в гражданстве другого государства?"
-        },
-        options: {
-          et: ["Jah, topeltkodakondsus on kõigile lubatud", "Kodakondsuse seaduse järgi ei või Eesti kodanik olla samal ajal mõne muu riigi kodakondsuses", "Ainult Euroopa Liidu riikide kodakondsuses"],
-          en: ["Yes, dual citizenship is permitted for everyone", "According to the Citizenship Act, an Estonian citizen may not simultaneously hold citizenship of another state", "Only with other EU member states"],
-          ru: ["Да, двойное гражданство разрешено всем", "По Закону о гражданстве гражданин Эстонии не может одновременно быть гражданином другого государства", "Только со странами ЕС"]
-        },
-        correct: 1,
-        exp: {
-          et: "Kodakondsuse seaduse § 1 lg 2 sätestab, et Eesti kodanik ei või olla samal ajal mõne muu riigi kodakondsuses (NB! Põhiseaduse § 8 järgi ei tohi aga kelleltki võtta sünniga omandatud Eesti kodakondsust).",
-          en: "§ 1(2) of the Citizenship Act states an Estonian citizen may not simultaneously hold another citizenship (though birthright citizenship cannot be revoked under Constitution § 8).",
-          ru: "§ 1 ч. 2 Закона о гражданстве гласит, что гражданин Эстонии не может одновременно иметь гражданство другого государства."
-        }
+        exp: { et: "Vähemalt 8 aastat, viimased 5 aastat püsivalt (KS § 6).", en: "At least 8 years, last 5 permanently (Citizenship Act § 6).", ru: "Не менее 8 лет, последние 5 постоянно (§ 6 Закона о гражданстве)." }
       }
     ];
 
@@ -348,545 +124,117 @@
       const [tab, setTab] = useState("home");
       const [isPro, setIsPro] = useState(false);
       const [showPayModal, setShowPayModal] = useState(false);
-      const [licenseKey, setLicenseKey] = useState("");
-      const [heroAns, setHeroAns] = useState(null);
       const [qIdx, setQIdx] = useState(0);
       const [picked, setPicked] = useState(null);
-      const [helperLang, setHelperLang] = useState("ru");
+      const [score, setScore] = useState(0);
 
       const t = T[lang];
       const curQ = QUESTIONS[qIdx];
 
-      const speakET = (text) => {
-        if ('speechSynthesis' in window) {
-          window.speechSynthesis.cancel();
-          const u = new SpeechSynthesisUtterance(text);
-          u.lang = 'et-EE';
-          u.rate = 0.92;
-          window.speechSynthesis.speak(u);
-        }
-      };
-
-      const activateLicense = () => {
-        if (licenseKey.trim().toUpperCase() === "ESTONIA2026" || licenseKey.trim().toUpperCase() === "PASS90") {
-          setIsPro(true);
-          setShowPayModal(false);
-          alert("PRO Unlocked! Kõik küsimused on avatud.");
-        } else {
-          alert("Vale kood / Invalid key. Proovi: ESTONIA2026");
-        }
-      };
-
       return (
         <div className="min-h-screen flex flex-col">
-          {/* Estonian Flag Top Strip */}
           <div className="h-1.5 w-full flex">
             <div className="flex-1 bg-[#0072CE]"></div>
             <div className="flex-1 bg-slate-900"></div>
             <div className="flex-1 bg-white border-b border-slate-200"></div>
           </div>
 
-          {/* Navbar */}
           <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
             <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
               <div onClick={() => setTab("home")} className="flex items-center gap-2.5 cursor-pointer">
-                <div className="w-9 h-9 rounded-lg bg-[#0072CE] text-white font-extrabold flex items-center justify-center shadow-sm">
-                  EE
-                </div>
+                <div className="w-9 h-9 rounded-lg bg-[#0072CE] text-white font-extrabold flex items-center justify-center">EE</div>
                 <div>
-                  <span className="font-extrabold text-lg tracking-tight text-slate-900">Põhiseadus</span>
-                  <span className="font-extrabold text-lg tracking-tight text-[#0072CE]">Pass</span>
-                  <span className="ml-2 text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-blue-50 text-[#0072CE] border border-blue-200">
-                    HARNO 2026
-                  </span>
+                  <span className="font-extrabold text-lg text-slate-900">Põhiseadus</span>
+                  <span className="font-extrabold text-lg text-[#0072CE]">Pass</span>
                 </div>
               </div>
 
-              <nav className="hidden md:flex items-center gap-1">
-                {["home", "practice", "pricing"].map((k) => (
-                  <button
-                    key={k}
-                    onClick={() => setTab(k)}
-                    className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition ${
-                      tab === k ? "bg-blue-50 text-[#0072CE]" : "text-slate-600 hover:text-slate-900"
-                    }`}
-                  >
-                    {t.nav[k]}
-                  </button>
-                ))}
-              </nav>
-
-              <div className="flex items-center gap-2">
-                <div className="flex bg-slate-100 p-1 rounded-lg border border-slate-200">
+              <div className="flex items-center gap-3">
+                <div className="flex bg-slate-100 p-1 rounded-lg border">
                   {["et", "en", "ru"].map((l) => (
-                    <button
-                      key={l}
-                      onClick={() => setLang(l)}
-                      className={`px-2.5 py-1 rounded-md text-xs font-bold uppercase transition ${
-                        lang === l ? "bg-white text-[#0072CE] shadow-sm" : "text-slate-600"
-                      }`}
-                    >
-                      {l}
-                    </button>
+                    <button key={l} onClick={() => setLang(l)} className={`px-2.5 py-1 rounded text-xs font-bold uppercase ${lang === l ? "bg-white text-[#0072CE] shadow" : "text-slate-600"}`}>{l}</button>
                   ))}
                 </div>
-
-                <button
-                  onClick={() => setShowPayModal(true)}
-                  className={`px-3.5 py-2 rounded-lg text-xs font-bold transition ${
-                    isPro
-                      ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
-                      : "bg-[#0072CE] text-white hover:bg-blue-700 shadow-sm"
-                  }`}
-                >
-                  {isPro ? "✓ PRO PASS AKTIIVNE" : "PRO PASS · 29,99 €"}
+                <button onClick={() => setShowPayModal(true)} className={`px-4 py-2 rounded-lg text-xs font-bold ${isPro ? "bg-emerald-100 text-emerald-800" : "bg-[#0072CE] text-white"}`}>
+                  {isPro ? "✓ PRO ACTIVE" : "PRO PASS · 29.99 €"}
                 </button>
               </div>
             </div>
           </header>
 
-          {/* HOME TAB */}
           {tab === "home" && (
-            <main className="flex-1">
-              {/* Hero + Live Interactive Question */}
-              <section className="max-w-6xl mx-auto px-4 py-12 md:py-16 grid md:grid-cols-12 gap-10 items-center">
-                <div className="md:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0072CE] text-xs font-bold">
-                    <span>🇪🇪</span> {t.hero.badge}
-                  </div>
-                  <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
-                    {t.hero.title}
-                  </h1>
-                  <p className="text-lg text-slate-600 leading-relaxed">
-                    {t.hero.subtitle}
-                  </p>
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    <button
-                      onClick={() => setTab("practice")}
-                      className="px-6 py-3.5 rounded-xl bg-[#0072CE] hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-600/20 transition"
-                    >
-                      {t.hero.cta1}
-                    </button>
-                    <button
-                      onClick={() => setTab("pricing")}
-                      className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 font-bold border border-slate-300 transition"
-                    >
-                      {t.hero.cta2}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Live Interactive Demo Card */}
-                <div className="md:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-xl p-6 space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#0072CE]">
-                        {t.hero.liveTitle}
-                      </span>
-                      <p className="text-xs text-slate-500">{t.hero.liveSub}</p>
-                    </div>
-                    <span className="text-xs font-bold bg-slate-100 px-2.5 py-1 rounded-md text-slate-700">
-                      § 1
-                    </span>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <div className="flex items-start justify-between gap-2">
-                      <p className="font-bold text-slate-900 text-base">
-                        {QUESTIONS[0].q.et}
-                      </p>
-                      <button
-                        onClick={() => speakET(QUESTIONS[0].q.et)}
-                        className="text-xs px-2 py-1 rounded bg-blue-50 text-[#0072CE] font-bold shrink-0"
-                        title="Kuula eesti keeles"
-                      >
-                        🔊 ET
-                      </button>
-                    </div>
-                    {lang !== "et" && (
-                      <p className="text-xs text-slate-500 italic">
-                        {QUESTIONS[0].q[lang]}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="space-y-2">
-                    {QUESTIONS[0].options.et.map((opt, idx) => {
-                      const isSelected = heroAns === idx;
-                      const isRight = idx === QUESTIONS[0].correct;
-                      let cls = "border-slate-200 hover:border-blue-400 bg-slate-50";
-                      if (heroAns !== null) {
-                        if (isRight) cls = "border-emerald-500 bg-emerald-50 text-emerald-900";
-                        else if (isSelected) cls = "border-rose-400 bg-rose-50 text-rose-900";
-                      }
-                      return (
-                        <button
-                          key={idx}
-                          onClick={() => setHeroAns(idx)}
-                          className={`w-full text-left p-3 rounded-xl border text-sm font-semibold transition flex items-center justify-between ${cls}`}
-                        >
-                          <div>
-                            <div>{opt}</div>
-                            {lang !== "et" && (
-                              <div className="text-xs font-normal opacity-75">
-                                {QUESTIONS[0].options[lang][idx]}
-                              </div>
-                            )}
-                          </div>
-                          {heroAns !== null && isRight && <span>✅</span>}
-                          {heroAns === idx && !isRight && <span>❌</span>}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {heroAns !== null && (
-                    <div className="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200 text-xs space-y-1 text-slate-700">
-                      <div className="font-bold text-[#0072CE]">Selgitus ({QUESTIONS[0].ref}):</div>
-                      <p>{QUESTIONS[0].exp[lang]}</p>
-                    </div>
-                  )}
-                </div>
-              </section>
-
-              {/* 6-Stop Estonian Journey Roadmap */}
-              <section className="bg-white border-y border-slate-200 py-14">
-                <div className="max-w-6xl mx-auto px-4 space-y-10">
-                  <div className="text-center max-w-2xl mx-auto space-y-2">
-                    <h2 className="text-3xl font-extrabold text-slate-900">{t.roadmap.title}</h2>
-                    <p className="text-slate-600">{t.roadmap.sub}</p>
-                  </div>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    {t.roadmap.steps.map((s, i) => (
-                      <div key={i} className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 hover:shadow-md transition">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-[#0072CE] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
-                            {s.place}
-                          </span>
-                          <span className="w-7 h-7 rounded-full bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">
-                            0{i + 1}
-                          </span>
-                        </div>
-                        <h3 className="font-bold text-lg text-slate-900">{s.title}</h3>
-                        <p className="text-sm text-slate-600 leading-relaxed">{s.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              {/* Two Stamps Section */}
-              <section className="max-w-6xl mx-auto px-4 py-14 space-y-8">
-                <div className="text-center max-w-2xl mx-auto space-y-2">
-                  <h2 className="text-3xl font-extrabold text-slate-900">{t.stamps.title}</h2>
-                  <p className="text-slate-600">{t.stamps.sub}</p>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white p-7 rounded-2xl border-2 border-[#0072CE] shadow-sm space-y-4">
-                    <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded bg-blue-50 text-[#0072CE]">
-                      TEMPEL #1 · HARNO
-                    </span>
-                    <h3 className="text-xl font-extrabold text-slate-900">{t.stamps.s1Title}</h3>
-                    <p className="text-sm text-slate-600 font-medium">{t.stamps.s1Meta}</p>
-                    <button
-                      onClick={() => setTab("practice")}
-                      className="w-full py-3 rounded-xl bg-[#0072CE] text-white font-bold hover:bg-blue-700 transition"
-                    >
-                      {t.stamps.s1Btn} →
-                    </button>
-                  </div>
-                  <div className="bg-white p-7 rounded-2xl border-2 border-slate-800 shadow-sm space-y-4">
-                    <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded bg-slate-100 text-slate-800">
-                      TEMPEL #2 · KEELEEKSAM
-                    </span>
-                    <h3 className="text-xl font-extrabold text-slate-900">{t.stamps.s2Title}</h3>
-                    <p className="text-sm text-slate-600 font-medium">{t.stamps.s2Meta}</p>
-                    <button
-                      onClick={() => setTab("pricing")}
-                      className="w-full py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition"
-                    >
-                      {t.stamps.s2Btn} →
-                    </button>
-                  </div>
-                </div>
-              </section>
+            <main className="flex-1 max-w-6xl mx-auto px-4 py-16 text-center space-y-6">
+              <span className="px-3 py-1 rounded-full bg-blue-50 text-[#0072CE] text-xs font-bold border border-blue-200">🇪🇪 {t.hero.badge}</span>
+              <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 max-w-3xl mx-auto">{t.hero.title}</h1>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">{t.hero.subtitle}</p>
+              <div className="flex justify-center gap-4 pt-4">
+                <button onClick={() => setTab("practice")} className="px-8 py-4 rounded-xl bg-[#0072CE] text-white font-bold shadow-lg hover:bg-blue-700">{t.hero.cta1}</button>
+              </div>
             </main>
           )}
 
-          {/* PRACTICE TAB */}
           {tab === "practice" && (
-            <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-10 space-y-6">
-              <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200">
-                <div>
-                  <h2 className="text-xl font-extrabold text-slate-900">
-                    HARNO Küsimuste Pank ({qIdx + 1} / {QUESTIONS.length})
-                  </h2>
-                  <p className="text-xs text-slate-500">
-                    Vali abikeel tõlke ja selgituse jaoks:
-                  </p>
+            <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-10 space-y-6">
+              <div className="bg-white p-6 rounded-2xl border shadow-sm space-y-4">
+                <div className="flex justify-between items-center text-xs font-bold text-[#0072CE]">
+                  <span>{curQ.ref}</span>
+                  <span>Question {qIdx + 1} / {QUESTIONS.length}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  {["en", "ru", "et"].map((hl) => (
-                    <button
-                      key={hl}
-                      onClick={() => setHelperLang(hl)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase border ${
-                        helperLang === hl
-                          ? "bg-[#0072CE] text-white border-[#0072CE]"
-                          : "bg-slate-50 text-slate-700 border-slate-200"
-                      }`}
-                    >
-                      Abi: {hl}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Question Card */}
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8 space-y-6">
-                {!curQ.free && !isPro ? (
-                  <div className="text-center py-10 space-y-4">
-                    <div className="text-4xl">🔒</div>
-                    <h3 className="text-2xl font-extrabold text-slate-900">
-                      See küsimus on osa PRO paketist
-                    </h3>
-                    <p className="text-slate-600 max-w-md mx-auto text-sm">
-                      Ava kõik eksamiküsimused, selgitused 3 keeles ja piiramatu arv proovieksameid 90 päevaks.
-                    </p>
-                    <button
-                      onClick={() => setShowPayModal(true)}
-                      className="px-6 py-3 rounded-xl bg-[#0072CE] text-white font-bold shadow-md"
-                    >
-                      Ava täielik ligipääs (29,99 €) →
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-50 text-[#0072CE] border border-blue-200">
-                        {curQ.ref}
-                      </span>
-                      <button
-                        onClick={() => speakET(curQ.q.et)}
-                        className="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800"
-                      >
-                        🔊 Kuula küsimust (ET)
+                <h3 className="text-xl font-extrabold text-slate-900">{curQ.q[lang] || curQ.q.et}</h3>
+                <div className="space-y-3">
+                  {curQ.options[lang] ? curQ.options[lang].map((opt, idx) => {
+                    let st = "border-slate-200 bg-slate-50";
+                    if (picked !== null) {
+                      if (idx === curQ.correct) st = "border-emerald-500 bg-emerald-50 text-emerald-900";
+                      else if (picked === idx) st = "border-rose-400 bg-rose-50 text-rose-900";
+                    }
+                    return (
+                      <button key={idx} onClick={() => { setPicked(idx); if(idx === curQ.correct) setScore(s=>s+1); }} className={`w-full text-left p-4 rounded-xl border-2 font-semibold transition ${st}`}>
+                        {opt}
                       </button>
-                    </div>
-
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-extrabold text-slate-900">
-                        {curQ.q.et}
-                      </h3>
-                      {helperLang !== "et" && (
-                        <p className="text-sm text-slate-500 italic">
-                          {curQ.q[helperLang]}
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="space-y-3">
-                      {curQ.options.et.map((opt, idx) => {
-                        const isSel = picked === idx;
-                        const isRight = idx === curQ.correct;
-                        let st = "border-slate-200 bg-slate-50 hover:border-blue-400";
-                        if (picked !== null) {
-                          if (isRight) st = "border-emerald-500 bg-emerald-50 text-emerald-950";
-                          else if (isSel) st = "border-rose-400 bg-rose-50 text-rose-950";
-                        }
-                        return (
-                          <button
-                            key={idx}
-                            onClick={() => setPicked(idx)}
-                            className={`w-full text-left p-4 rounded-xl border-2 transition flex items-center justify-between ${st}`}
-                          >
-                            <div>
-                              <div className="font-bold text-sm md:text-base">{opt}</div>
-                              {helperLang !== "et" && (
-                                <div className="text-xs text-slate-500 mt-0.5">
-                                  {curQ.options[helperLang][idx]}
-                                </div>
-                              )}
-                            </div>
-                            {picked !== null && isRight && <span>✅</span>}
-                            {picked === idx && !isRight && <span>❌</span>}
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {picked !== null && (
-                      <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 space-y-1.5 text-sm">
-                        <div className="font-extrabold text-[#0072CE]">
-                          Selgitus ({curQ.ref}):
-                        </div>
-                        <p className="text-slate-800 font-medium">{curQ.exp.et}</p>
-                        {helperLang !== "et" && (
-                          <p className="text-slate-600 text-xs pt-1 border-t border-blue-200/60">
-                            {curQ.exp[helperLang]}
-                          </p>
-                        )}
-                      </div>
-                    )}
-                  </>
+                    );
+                  }) : null}
+                </div>
+                {picked !== null && (
+                  <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-sm space-y-1">
+                    <div className="font-bold text-[#0072CE]">Explanation:</div>
+                    <p className="text-slate-700">{curQ.exp[lang] || curQ.exp.et}</p>
+                  </div>
                 )}
-
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <button
-                    disabled={qIdx === 0}
-                    onClick={() => { setQIdx(Math.max(0, qIdx - 1)); setPicked(null); }}
-                    className="px-4 py-2 rounded-lg border border-slate-300 text-sm font-bold disabled:opacity-40"
-                  >
-                    ← Eelmine
-                  </button>
-                  <div className="flex gap-1.5 flex-wrap justify-center">
-                    {QUESTIONS.map((q, i) => (
-                      <button
-                        key={q.id}
-                        onClick={() => { setQIdx(i); setPicked(null); }}
-                        className={`w-8 h-8 rounded-lg text-xs font-bold ${
-                          qIdx === i
-                            ? "bg-[#0072CE] text-white"
-                            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                        }`}
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
-                  </div>
-                  <button
-                    disabled={qIdx === QUESTIONS.length - 1}
-                    onClick={() => { setQIdx(Math.min(QUESTIONS.length - 1, qIdx + 1)); setPicked(null); }}
-                    className="px-4 py-2 rounded-lg bg-slate-900 text-white text-sm font-bold disabled:opacity-40"
-                  >
-                    Järgmine →
-                  </button>
+                <div className="flex justify-between pt-4 border-t">
+                  <button onClick={() => { setQIdx(Math.max(0, qIdx - 1)); setPicked(null); }} className="px-4 py-2 border rounded-lg text-sm font-bold">← Prev</button>
+                  <button onClick={() => { setQIdx(Math.min(QUESTIONS.length - 1, qIdx + 1)); setPicked(null); }} className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-bold">Next →</button>
                 </div>
               </div>
             </main>
           )}
 
-          {/* PRICING TAB */}
-          {tab === "pricing" && (
-            <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-12 space-y-10">
-              <div className="text-center max-w-2xl mx-auto space-y-2">
-                <h2 className="text-3xl font-extrabold text-slate-900">{t.pricing.title}</h2>
-                <p className="text-slate-600">{t.pricing.sub}</p>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                {[t.pricing.p1, t.pricing.p2, t.pricing.p3].map((p, idx) => (
-                  <div
-                    key={idx}
-                    className={`bg-white rounded-2xl p-7 flex flex-col justify-between border-2 ${
-                      idx === 2 ? "border-[#0072CE] shadow-xl relative" : "border-slate-200"
-                    }`}
-                  >
-                    {p.badge && (
-                      <span className="absolute -top-3 right-6 bg-[#0072CE] text-white text-[10px] font-extrabold px-3 py-1 rounded-full">
-                        {p.badge}
-                      </span>
-                    )}
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-extrabold text-slate-900">{p.name}</h3>
-                      <div>
-                        <span className="text-4xl font-extrabold text-slate-900">{p.price}</span>
-                        <span className="text-xs text-slate-500 ml-2">{p.period}</span>
-                      </div>
-                      <ul className="space-y-2.5 text-sm text-slate-700 pt-2">
-                        {p.features.map((f, fi) => (
-                          <li key={fi} className="flex items-center gap-2">
-                            <span className="text-emerald-600 font-bold">✓</span> {f}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <button
-                      onClick={() => idx === 0 ? setTab("practice") : setShowPayModal(true)}
-                      className={`mt-8 w-full py-3.5 rounded-xl font-bold transition ${
-                        idx === 2
-                          ? "bg-[#0072CE] text-white hover:bg-blue-700"
-                          : "bg-slate-900 text-white hover:bg-slate-800"
-                      }`}
-                    >
-                      {p.btn}
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </main>
-          )}
-
-          {/* PAYMENT & LICENSE MODAL */}
           {showPayModal && (
-            <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-              <div className="bg-white rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl border border-slate-200">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <h3 className="font-extrabold text-lg text-slate-900">
-                    Põhiseadus Pass + Eesti Keel B1
-                  </h3>
-                  <button
-                    onClick={() => setShowPayModal(false)}
-                    className="text-slate-400 hover:text-slate-700 font-bold"
-                  >
-                    ✕
-                  </button>
+            <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+              <div className="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+                <div className="flex justify-between items-center border-b pb-3">
+                  <h3 className="font-extrabold text-lg">Põhiseadus Pass PRO</h3>
+                  <button onClick={() => setShowPayModal(false)} className="font-bold">✕</button>
                 </div>
-
-                <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-between">
+                <div className="p-4 rounded-xl bg-blue-50 border flex justify-between items-center">
                   <div>
-                    <div className="font-bold text-slate-900">90-päevane täispääse</div>
-                    <div className="text-xs text-slate-600">Ühekordne makse · Kõik küsimused</div>
+                    <div className="font-bold">90 Days Full Access</div>
+                    <div className="text-xs text-slate-600">All questions + B1 Estonian Course</div>
                   </div>
-                  <div className="text-2xl font-extrabold text-[#0072CE]">29,99 €</div>
+                  <div className="text-2xl font-extrabold text-[#0072CE]">29.99 €</div>
                 </div>
-
-                {/* Gumroad / Stripe Checkout Button */}
-                <a
-                  href="https://gumroad.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block w-full text-center py-3.5 rounded-xl bg-[#0072CE] hover:bg-blue-700 text-white font-bold shadow-md transition"
-                >
-                  💳 Maksa kaardiga / Apple Pay (29,99 €) →
-                </a>
-
-                <div className="pt-3 border-t border-slate-200 space-y-2">
-                  <label className="block text-xs font-bold text-slate-600 uppercase">
-                    Sul on juba litsentsikood? (Testkood: ESTONIA2026)
-                  </label>
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={licenseKey}
-                      onChange={(e) => setLicenseKey(e.target.value)}
-                      placeholder="ESTONIA2026"
-                      className="flex-1 px-3 py-2 rounded-lg border border-slate-300 text-sm font-mono uppercase"
-                    />
-                    <button
-                      onClick={activateLicense}
-                      className="px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-bold"
-                    >
-                      Aktiveeri
-                    </button>
-                  </div>
+                <a href="https://gumroad.com" target="_blank" rel="noreferrer" className="block text-center py-3.5 bg-[#0072CE] text-white font-bold rounded-xl">Pay with Card / Apple Pay →</a>
+                <div className="pt-2">
+                  <input type="text" placeholder="Enter License Key (e.g. ESTONIA2026)" onChange={(e)=>{if(e.target.value.toUpperCase()==="ESTONIA2026"){setIsPro(true);setShowPayModal(false);alert("PRO Unlocked!");}}} className="w-full px-3 py-2 border rounded-lg text-sm font-mono uppercase" />
                 </div>
               </div>
             </div>
           )}
-
-          {/* Footer */}
-          <footer className="bg-white border-t border-slate-200 py-8 mt-12">
-            <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-              <div>© 2026 Põhiseadus Pass · Eesti Kodakondsuse & Keele Eksam</div>
-              <div>Ametlikud allikad: Riigi Teataja & HARNO</div>
-            </div>
-          </footer>
         </div>
       );
     }
 
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(<App />);
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
   </script>
 </body>
 </html>
